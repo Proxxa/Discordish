@@ -3,6 +3,7 @@ const GatewayManager = require('../websockets/GatewayManager.js')
 const GuildManager = require('../guild/GuildManager.js')
 const User = require("../user/User.js")
 const UserManager = require('../user/UserManager.js')
+const Message = require("../channel/Message.js")
 
 class Client extends EventEmitter {
     /**
@@ -30,7 +31,11 @@ class Client extends EventEmitter {
         })
 
         this.gateway.on("GUILD_CREATE", (data) => {
-            this.guildManager.updateCache(data.d)
+            this.guilds.updateCache(data.d)
+        })
+
+        this.gateway.on("MESSAGE_CREATE", (data) => {
+            this.emit("message", new Message(this, data.d))
         })
     }
 }
