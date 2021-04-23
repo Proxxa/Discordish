@@ -81,7 +81,6 @@ class GatewayManager extends EventEmitter {
         if (this.lonelyHeartbeats < 2) {
             this.client.ws.send(JSON.stringify({ op: 1, d: this.lastSeq }))
             this.client.emit('debug', '[WS] Sent heartbeat.')
-            this.client.emit('debug', `[WS] Unresponded heartbeats: ${this.lonelyHeartbeats}`)
         } else {
             this.client.ws.close("[GW] Heartbeats have not received ACKs")
         }
