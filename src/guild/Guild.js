@@ -1,7 +1,6 @@
-const EventEmitter = require("events");
 const { GuildMember } = require("../user/GuildMember");
 
-class Guild extends EventEmitter {
+class Guild {
     /**
      * 
      * @param {Object} guild "The data for the guild." 
