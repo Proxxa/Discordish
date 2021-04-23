@@ -6,7 +6,6 @@ class Guild {
      * @param {Object} guild "The data for the guild." 
      */
     constructor(client, guild) {
-        super()
         /**
          * The availability of the guild.
          * @readonly
@@ -30,7 +29,7 @@ class Guild {
              * Lazy guilds have this set to true
              * @readonly
              */
-            Object.defineProperties(this, 'lazy', { value: guild.lazy })
+            this.lazy = guild.lazy
 
             /**
              * If the guild is identified as "large"
@@ -75,6 +74,14 @@ class Guild {
              */
             Object.defineProperty(this, 'joinedTimestamp', { value: guild.joined_at })
             
+            /**
+             * The guild's channels.
+             * @readonly
+             */
+            this.channels = new Map()
+            for (const channel of guild.channels) {
+                this.channels.set(channel.id, channel)
+            }
         }
         /**
          * The guild id.
