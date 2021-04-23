@@ -16,7 +16,7 @@ class Client extends EventEmitter {
 
         this.gateway.on("READY", (readyData) => {
             this.guildManager = new GuildManager(this, readyData.d.guilds)
-            this.user = new User(readyData.d.user)
+            this.user = new User(this, readyData.d.user)
             this.users = new UserManager(this, [this.user])
             this.emit("ready")
         })
