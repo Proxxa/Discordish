@@ -27,12 +27,12 @@ class Guild extends EventEmitter {
              * If the guild is identified as "large"
              */
             this.large = guild.large
-            /**
-             * A set of cached channels.
-             */
-            for (const channel of guild.channels) {
-                // create channel class
-            }
+            // /**
+            //  * A set of cached channels.
+            //  */
+            // for (const channel of guild.channels) {
+            // create channel class
+            // }
             this.locale = guild.preferred_locale
             this.splash = guild.splash
             /**

@@ -1,21 +1,18 @@
-const EventEmitter = require("events");
 const Guild = require("./Guild")
 const fetch = require('node-fetch')
 
-class GuildManager extends EventEmitter {
+class GuildManager {
     /**
      * 
      * @param {Client} client 
      * @param {Array<Object>} guilds 
      */
     constructor(client, guilds = []) {
-        super()
         Object.defineProperty(this, 'client', { value: client })
         this.cache = new Map()
         for (const guild of guilds) {
             if (guild instanceof Guild) this.cache.set(guild.id, guild)
             else this.cache.set(guild.id, new Guild(this.client, guild))
-            console.log(`\nMade a guild. ${guild.id}\n`)
         }
     }
 
