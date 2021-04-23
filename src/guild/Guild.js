@@ -1,4 +1,5 @@
 const EventEmitter = require("events");
+const { GuildMember } = require("../user/GuildMember");
 
 class Guild extends EventEmitter {
     /**
@@ -39,6 +40,13 @@ class Guild extends EventEmitter {
              * The name of the guild
              */
             this.name = guild.name
+            /**
+             * The owner's id.
+             * @readonly
+             * @private
+             */
+            this._owner = guild.owner_id
+            
         }
         /**
          * The guild id.
@@ -50,14 +58,26 @@ class Guild extends EventEmitter {
          * @readonly
          */
         Object.defineProperty(this, 'joinedTimestamp', { value: guild.joined_at })
+        /**
+         * The client this guild comes from.
+         * @readonly
+         */
+        Object.defineProperty(this, 'client', { value: client })
     }
 
+
+    /**
+     * @returns {Promise<GuildMember>} "Promises the GuildMember object of the guild owner."
+     */
+    get owner() {
+        return this.client.users.fetch(new GuildMember(this._owner))
+    }
+
+    /**
+     * 
+     */
     get id() {
         return this._id
-    }
-
-    defineReality() {
-        console.log("what")
     }
 }
 
