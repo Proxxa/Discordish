@@ -1,0 +1,16 @@
+{
+  "name": "discord-api-raw",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "ws": "^7.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
