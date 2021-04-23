@@ -9,8 +9,18 @@ class GuildMember extends User {
      */
     constructor(user, guild) {
         super(user)
-        this.user = user
+
+        /**
+         * The underlying user object.
+         * @private
+         * @readonly
+         */
+        Object.defineProperty(this, '_user', { value: user })
         this.guild = guild
+    }
+
+    get user() {
+        return new User(this._user)
     }
 }
 
