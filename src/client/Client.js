@@ -13,7 +13,15 @@ class Client extends EventEmitter {
         super()
         this.clientOptions = ClientOptions
         this.gateway = new GatewayManager(this)
-
+    }
+    /**
+     * Logs in to Discord
+     * @param {String} token "The Bot Token"
+     */
+    async login(token = this.token) {
+        this.token = token
+        await this.gateway.connect()
+        
         this.gateway.on("READY", (readyData) => {
             this.guildManager = new GuildManager(this, readyData.d.guilds)
             this.user = new User(this, readyData.d.user)
@@ -24,15 +32,6 @@ class Client extends EventEmitter {
         this.gateway.on("GUILD_CREATE", (data) => {
             this.guildManager.updateCache(data.d)
         })
-    }
-    /**
-     * Logs in to Discord
-     * @param {String} token "The Bot Token"
-     */
-    async login(token = this.token) {
-        this.token = token
-        await this.gateway.connect()
-        
     }
 }
 
