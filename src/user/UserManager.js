@@ -44,8 +44,8 @@ class UserManager {
     /**
      * Ensures that the input guild is up-to-date and exists.
      * If the guild is fetched and not cached, emits "guildCreate" from this.client
-     * @param {UserResolvable} guild "A Guild, guild ID, or object that may be turned into a Guild"
-     * @returns {Promise<User>} "The Guild instance."
+     * @param {UserResolvable} guild "A User, user ID, or object that may be turned into a User"
+     * @returns {Promise<User>} "The User instance."
      * @private "Should only be called internally."
      */
      async updateCache(user) {
@@ -55,7 +55,7 @@ class UserManager {
                 if (user instanceof User) {
                     this.cache.set(user.id, user)
                 } else {
-                    this.cache.set(user.id, new Guild(this.client, user))
+                    this.cache.set(user.id, new User(this.client, user))
                 }
                 resolve(this.cache.get(user.id))
             } catch (error) {
