@@ -8,7 +8,7 @@ class GuildMember extends User {
      * @param {Guild} guild "The guild this user is a member of."
      */
     constructor(user, guild) {
-        super(user)
+        super(user.client, user)
 
         /**
          * The underlying user object.
@@ -20,7 +20,7 @@ class GuildMember extends User {
     }
 
     get user() {
-        return new User(this._user)
+        return new User(this.client, this._user)
     }
 }
 
