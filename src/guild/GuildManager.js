@@ -42,14 +42,23 @@ class GuildManager extends EventEmitter {
     )}
 
     /**
-     * Ensures that the input guild is up-to-date
+     * Ensures that the input guild is up-to-date and exists.
+     * If the guild is fetched and not cached, emits "guildCreate" from this.client
      * @param {GuildResolvable} guild "A Guild, guild ID, or object that may be turned into a Guild"
      * @returns {Guild} "The Guild instance."
+     * @private "Should only be called internally."
      */
     async updateCache(guild) {
         if (typeof guild === "string" || typeof guild === "number") guild = await fetch(guild)
-        if (guild instanceof Guild) this.cache.set(guild.id, guild)
-        else this.cache.set(guild.id, new Guild(this.client, guild))
+        if (guild instanceof Guild) {
+            this.cache.set(guild.id, guild)
+        }
+        else {
+            if (!this.cache.has(guild.id)) {
+                this.client.emit("guildCreate", guild)
+            }
+            this.cache.set(guild.id, new Guild(this.client, guild))
+        }
         return this.cache.get(guild.id)
     }
 }
