@@ -34,6 +34,10 @@ class TextChannel extends GuildChannel {
          */
         this.rateLimit = (data.rate_limit_per_user ? data.rate_limit_per_user : 0)
     }
+
+    send(content) {
+        this.client.emit("debug", `Sending to ${this.id} with ${content}`)
+    }
 }
 
 module.exports = TextChannel

@@ -6,6 +6,6 @@ exports.WebSocket = require('ws')
  * @param  {...any} args "Additional arguments."
  */
 exports.create = (gateway, ...args) => {
-    ws = new exports.WebSocket(gateway, ...args)
+    const ws = new exports.WebSocket(gateway, ...args)
     return ws
 }

@@ -41,7 +41,7 @@ class Client extends EventEmitter {
 
 
 
-defaultClientOptions = {
+const defaultClientOptions = {
     gateway: {
         version: 8,
         encoding: 'json'

@@ -7,7 +7,7 @@ class Channel {
      */
     constructor(client, data) {
         this.client = client
-
+        
         /**
          * The channel type.
          * @readonly

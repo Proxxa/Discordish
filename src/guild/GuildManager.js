@@ -47,10 +47,10 @@ class GuildManager {
      * @returns {Promise<Guild>} "The Guild instance."
      * @private "Should only be called internally."
      */
-    async updateCache(guild) {
-        return new Promise(async (resolve, reject) => {
+    updateCache(guild) {
+        return new Promise((resolve, reject) => {
             try {
-                if (typeof guild === "string" || typeof guild === "number") guild = await this.fetch(guild)
+                if (typeof guild === "string" || typeof guild === "number") guild = this.fetch(guild)
                 if (guild instanceof Guild) this.cache.set(guild.id, guild)
                 else {
                     if (!this.cache.has(guild.id)) {

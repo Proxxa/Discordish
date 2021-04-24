@@ -48,10 +48,10 @@ class UserManager {
      * @returns {Promise<User>} "The User instance."
      * @private "Should only be called internally."
      */
-     async updateCache(user) {
-        return new Promise(async (resolve, reject) => {
+     updateCache(user) {
+        return new Promise((resolve, reject) => {
             try {
-                if (typeof user === "string" || typeof user === "number") user = await this.fetch(user)
+                if (typeof user === "string" || typeof user === "number") user = this.fetch(user)
                 if (user instanceof User) this.cache.set(user.id, user)
                 else this.cache.set(user.id, new User(this.client, user))
                 resolve(this.cache.get(user.id))

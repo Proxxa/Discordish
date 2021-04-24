@@ -1,4 +1,4 @@
-const { GuildMember } = require("../user/GuildMember");
+const { GuildMember } = require("../user/GuildMember")
 
 class Guild {
     /**

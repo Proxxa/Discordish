@@ -63,7 +63,7 @@ class GatewayManager extends EventEmitter {
             this.client.emit('debug', `[WS] Identifying.\n${identifying}`)
             this.client.ws.send(identifying)
         } else {
-            ws.once('message', data => {
+            this.client.ws.once('message', data => { // eslint-disable-line no-unused-vars
                 identifying = JSON.stringify(identifying)
                 this.client.emit('debug', `[WS] Identifying.\n${identifying}`)
                 this.client.ws.send(identifying)
@@ -101,7 +101,7 @@ class GatewayManager extends EventEmitter {
         
 
         ws.on("error", ev => {
-            error = ev && ev.error ? ev.error : ev
+            const error = ev && ev.error ? ev.error : ev
             throw new Error(error)
         })
         ws.on("message", dat => {
@@ -125,7 +125,7 @@ class GatewayManager extends EventEmitter {
             }, data.d.heartbeat_interval * Math.random() * 0.5)
             this.heartbeatInterval = setInterval(() => {
                 this.heartbeat()
-            }, data.d.heartbeat_interval);
+            }, data.d.heartbeat_interval)
         })
         ws.on("close", reas => {
             this.client.emit("disconnect", reas)

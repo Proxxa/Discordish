@@ -1,6 +1,6 @@
 
 function enumerify(arr) {
-    let obj
+    let obj = {}
     let i = 0
     for (const it of arr) {
         obj[it] = it
