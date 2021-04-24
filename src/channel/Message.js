@@ -101,9 +101,9 @@ class Message {
      */
     get mentions() {
         let mentioned = []
-        for (const user of this._mentions) {
+        for (const user of this._mentions) 
             mentioned.push(new GuildMember(this.client.users.fetch(user.id), this.guild))
-        }
+        
         return mentioned
     }
 

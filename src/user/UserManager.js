@@ -23,14 +23,14 @@ class UserManager {
      * @param {Boolean} forceApi "Whether or not to skip the cache"
      * @returns {Promise<User>} "The User instance."
      */
-     async fetch(userIdentifiable, forceApi = false) {
+    fetch(userIdentifiable, forceApi = false) {
         return new Promise((resolve, reject) => {
             if (typeof userIdentifiable === 'number') userIdentifiable = userIdentifiable.toString()
             if (this.cache.has(userIdentifiable) && !forceApi) resolve(this.cache.get(userIdentifiable))
             else {
-                for (const user of this.cache) {
+                for (const user of this.cache) 
                     if (user[1].name === userIdentifiable && !forceApi) resolve(user)
-                }
+                
                 fetch('https://discord.com/api/users/' + new URLSearchParams(userIdentifiable))
                     .then(res => res.json())
                     .then(res => {
@@ -39,7 +39,7 @@ class UserManager {
                     }).catch(reject)
             }
         }
-    )}
+        )}
 
     /**
      * Ensures that the input guild is up-to-date and exists.
@@ -48,7 +48,7 @@ class UserManager {
      * @returns {Promise<User>} "The User instance."
      * @private "Should only be called internally."
      */
-     updateCache(user) {
+    updateCache(user) {
         return new Promise((resolve, reject) => {
             try {
                 if (typeof user === "string" || typeof user === "number") user = this.fetch(user)

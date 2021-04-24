@@ -1,5 +1,5 @@
 
-function enumerify(arr) {
+const enumerify = function(arr) {
     let obj = {}
     let i = 0
     for (const it of arr) {

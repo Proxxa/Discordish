@@ -13,9 +13,9 @@ class DMChannel extends Channel {
          * @type {Map<User>}
          */
         this.recipients = new Map()
-        for (const recip of data.recipients) {
+        for (const recip of data.recipients) 
             this.recipients.set(recip.id, new User(recip))
-        }
+        
     }
 
     /**

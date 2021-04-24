@@ -10,10 +10,10 @@ class GuildManager {
     constructor(client, guilds = []) {
         Object.defineProperty(this, 'client', { value: client })
         this.cache = new Map()
-        for (const guild of guilds) {
+        for (const guild of guilds) 
             if (guild instanceof Guild) this.cache.set(guild.id, guild)
             else this.cache.set(guild.id, new Guild(this.client, guild))
-        }
+        
     }
 
     /**
@@ -22,14 +22,14 @@ class GuildManager {
      * @param {Boolean} forceApi "Whether or not to skip the cache
      * @returns {Promise<Guild>} "The Guild instance."
      */
-    async fetch(guildIdentifiable, forceApi = false) {
+    fetch(guildIdentifiable, forceApi = false) {
         return new Promise((resolve, reject) => {
             if (typeof guildIdentifiable === 'number') guildIdentifiable = guildIdentifiable.toString()
             if (this.cache.has(guildIdentifiable) && !forceApi) resolve(this.cache.get(guildIdentifiable))
             else {
-                for (const guild of this.cache) {
+                for (const guild of this.cache) 
                     if (guild[1].name === guildIdentifiable && !forceApi) resolve(guild)
-                }
+                
                 fetch('https://discord.com/api/guilds/' + new URLSearchParams(guildIdentifiable))
                     .then(res => res.json())
                     .then(res => {
@@ -38,7 +38,7 @@ class GuildManager {
                     }).catch(reject)
             }
         }
-    )}
+        )}
 
     /**
      * Ensures that the input guild is up-to-date and exists.
@@ -53,9 +53,9 @@ class GuildManager {
                 if (typeof guild === "string" || typeof guild === "number") guild = this.fetch(guild)
                 if (guild instanceof Guild) this.cache.set(guild.id, guild)
                 else {
-                    if (!this.cache.has(guild.id)) {
+                    if (!this.cache.has(guild.id)) 
                         this.client.emit("guildCreate", guild)
-                    }
+                    
                     this.cache.set(guild.id, new Guild(this.client, guild))
                 }
                 resolve(this.cache.get(guild.id))

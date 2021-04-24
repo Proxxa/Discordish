@@ -32,7 +32,7 @@ class TextChannel extends GuildChannel {
          * The time to wait between sending messages.
          * @readonly
          */
-        this.rateLimit = (data.rate_limit_per_user ? data.rate_limit_per_user : 0)
+        this.rateLimit = data.rate_limit_per_user ? data.rate_limit_per_user : 0
     }
 
     send(content) {

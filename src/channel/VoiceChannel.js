@@ -26,13 +26,13 @@ class VoiceChannel extends GuildChannel {
          * The region for this voice channel.
          * @readonly
          */
-        this.region = (data.rtc_region === null ? "automatic" : data.rtc_region)
+        this.region = data.rtc_region === null ? "automatic" : data.rtc_region
 
         /**
          * The video quality for the channel.
          * @readonly
          */
-        this.videoQuality = (data.video_quality_mode ? data.video_quality_mode : 1)
+        this.videoQuality = data.video_quality_mode ? data.video_quality_mode : 1
     }
 
 

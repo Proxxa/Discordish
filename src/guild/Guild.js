@@ -79,9 +79,9 @@ class Guild {
              * @readonly
              */
             this.channels = new Map()
-            for (const channel of guild.channels) {
+            for (const channel of guild.channels) 
                 this.channels.set(channel.id, channel)
-            }
+            
         }
         /**
          * The guild id.

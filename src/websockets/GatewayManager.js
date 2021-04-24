@@ -19,23 +19,23 @@ class GatewayManager extends EventEmitter {
     get gateway() {
         this.client.emit("debug", `[GW] Gateway requested.`)
         return new Promise((res, rej) => { 
-        if (this._gateway == null || this._gateway == undefined) {
-            fetch('https://discord.com/api/gateway/bot', { method: 'GET', headers: { 'Authorization': "Bot " + this.client.token } })
-                .then(response => response.json())
-                .then(body => {
-                    this.client.emit("debug", `[GW] Gateway response acquired`)
-                    this.client.emit("debug", body)
-                    if (body.url) {
-                        body.url = body.url + '/'
-                        this._gateway = body
-                        res(body)
-                    }
-                    else rej(new Error("Unknown error when getting gateway link."))
-                })
-                .catch(e => {
-                    rej("Whoops. " + e)
-                })
-        } else res(this._gateway)
+            if (this._gateway == null || this._gateway == undefined) 
+                fetch('https://discord.com/api/gateway/bot', { method: 'GET', headers: { 'Authorization': "Bot " + this.client.token } })
+                    .then(response => response.json())
+                    .then(body => {
+                        this.client.emit("debug", `[GW] Gateway response acquired`)
+                        this.client.emit("debug", body)
+                        if (body.url) {
+                            body.url = body.url + '/'
+                            this._gateway = body
+                            res(body)
+                        }
+                        else rej(new Error("Unknown error when getting gateway link."))
+                    })
+                    .catch(e => {
+                        rej(Error("Whoops. " + e))
+                    })
+            else res(this._gateway)
         })
     }
 
@@ -62,13 +62,13 @@ class GatewayManager extends EventEmitter {
             identifying = JSON.stringify(identifying)
             this.client.emit('debug', `[WS] Identifying.\n${identifying}`)
             this.client.ws.send(identifying)
-        } else {
+        } else 
             this.client.ws.once('message', data => { // eslint-disable-line no-unused-vars
                 identifying = JSON.stringify(identifying)
                 this.client.emit('debug', `[WS] Identifying.\n${identifying}`)
                 this.client.ws.send(identifying)
             })
-        }
+        
     }
 
 
@@ -81,9 +81,9 @@ class GatewayManager extends EventEmitter {
         if (this.lonelyHeartbeats < 2) {
             this.client.ws.send(JSON.stringify({ op: 1, d: this.lastSeq }))
             this.client.emit('debug', '[WS] Sent heartbeat.')
-        } else {
+        } else 
             this.client.ws.close("[GW] Heartbeats have not received ACKs")
-        }
+        
     }
 
     /**
