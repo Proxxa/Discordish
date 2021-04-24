@@ -17,7 +17,7 @@ class Guild {
              * and boost messages.
              * @readonly
              */
-            Object.defineProperty(this, 'systemChannel', { value: guild.system_channel_id })
+            this.systemChannel = guild.system_channel_id
 
             /**
              * If the guild is marked as NSFW
@@ -72,15 +72,15 @@ class Guild {
              * The timestamp at which the user joined the guild.
              * @readonly
              */
-            Object.defineProperty(this, 'joinedTimestamp', { value: guild.joined_at })
+            this.joinedTimestamp = guild.joined_at
             
             /**
              * The guild's channels.
              * @readonly
              */
-            this.channels = new Map()
+            this._channels = new Map()
             for (const channel of guild.channels) {
-                this.channels.set(channel.id, channel)
+                this._channels.set(channel.id, channel)
             }
         }
         /**
@@ -88,11 +88,16 @@ class Guild {
          * @readonly
          */
         Object.defineProperty(this, '_id', { value: guild.id })
+        console.log("IS " + guild.id + " EQUAL TO " + this._id + "?", this._id === guild.id)
         /**
          * The client this guild comes from.
          * @readonly
          */
         Object.defineProperty(this, 'client', { value: client })
+    }
+
+    get channels() {
+        return this._channels
     }
 
 
