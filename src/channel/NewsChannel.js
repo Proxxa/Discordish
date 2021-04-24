@@ -1,4 +1,4 @@
-const TextChannel = require("./TextChannel");
+const TextChannel = require("./TextChannel")
 
 
 class NewsChannel extends TextChannel {

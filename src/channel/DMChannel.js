@@ -1,6 +1,6 @@
-const User = require("../user/User");
-const Message = require("./Message");
-const TextChannel = require("./TextChannel");
+const User = require("../user/User")
+const Message = require("./Message")
+const Channel = require("./Channel")
 const fetch = require('node-fetch')
 
 class DMChannel extends Channel {

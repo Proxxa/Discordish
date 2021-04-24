@@ -1,4 +1,4 @@
-const GuildChannel = require("./GuildChannel");
+const GuildChannel = require("./GuildChannel")
 
 class TextChannel extends GuildChannel {
 

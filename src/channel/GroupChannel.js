@@ -1,4 +1,4 @@
-const DMChannel = require("./DMChannel");
+const DMChannel = require("./DMChannel")
 
 class GroupChannel extends DMChannel {
 

@@ -1,4 +1,4 @@
-const Channel = require("./Channel");
+const Channel = require("./Channel")
 
 class GuildChannel extends Channel {
 
