@@ -78,9 +78,9 @@ class Guild {
              * The guild's channels.
              * @readonly
              */
-            this._channels = new Map()
+            this.channels = new Map()
             for (const channel of guild.channels) {
-                this._channels.set(channel.id, channel)
+                this.channels.set(channel.id, channel)
             }
         }
         /**
@@ -95,12 +95,7 @@ class Guild {
          */
         Object.defineProperty(this, 'client', { value: client })
     }
-
-    get channels() {
-        return this._channels
-    }
-
-
+    
     /**
      * The guild's owner.
      * @returns {Promise<GuildMember>} Promises the GuildMember object of the guild owner.
