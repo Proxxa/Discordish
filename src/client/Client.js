@@ -1,7 +1,6 @@
 const EventEmitter = require("events")
 const GatewayManager = require('../websockets/GatewayManager.js')
 const GuildManager = require('../guild/GuildManager.js')
-const User = require("../user/User.js")
 const UserManager = require('../user/UserManager.js')
 const Message = require("../channel/Message.js")
 

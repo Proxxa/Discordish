@@ -52,11 +52,8 @@ class UserManager {
         return new Promise(async (resolve, reject) => {
             try {
                 if (typeof user === "string" || typeof user === "number") user = await this.fetch(user)
-                if (user instanceof User) {
-                    this.cache.set(user.id, user)
-                } else {
-                    this.cache.set(user.id, new User(this.client, user))
-                }
+                if (user instanceof User) this.cache.set(user.id, user)
+                else this.cache.set(user.id, new User(this.client, user))
                 resolve(this.cache.get(user.id))
             } catch (error) {
                 reject(error)

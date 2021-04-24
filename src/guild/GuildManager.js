@@ -51,9 +51,8 @@ class GuildManager {
         return new Promise(async (resolve, reject) => {
             try {
                 if (typeof guild === "string" || typeof guild === "number") guild = await this.fetch(guild)
-                if (guild instanceof Guild) {
-                    this.cache.set(guild.id, guild)
-                } else {
+                if (guild instanceof Guild) this.cache.set(guild.id, guild)
+                else {
                     if (!this.cache.has(guild.id)) {
                         this.client.emit("guildCreate", guild)
                     }

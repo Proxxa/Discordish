@@ -88,14 +88,14 @@ class Guild {
          * @readonly
          */
         Object.defineProperty(this, '_id', { value: guild.id })
-        console.log("IS " + guild.id + " EQUAL TO " + this._id + "?", this._id === guild.id)
+        
         /**
          * The client this guild comes from.
          * @readonly
          */
         Object.defineProperty(this, 'client', { value: client })
     }
-    
+
     /**
      * The guild's owner.
      * @returns {Promise<GuildMember>} Promises the GuildMember object of the guild owner.
