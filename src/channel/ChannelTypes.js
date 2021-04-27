@@ -5,6 +5,7 @@ const enumerify = function(arr) {
     for (const it of arr) {
         obj[it] = it
         obj[i] = it
+        i++
     }
     return Object.freeze(obj)
 }

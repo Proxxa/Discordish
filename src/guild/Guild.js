@@ -1,17 +1,23 @@
-const { GuildMember } = require("../user/GuildMember")
-
-class Guild {
+const GuildMember = require("../user/GuildMember")
+const Base = require('../Base')
+const ChannelManager = require('../managers/ChannelManager')
+class Guild extends Base {
     /**
      * 
      * @param {Object} guild "The data for the guild." 
      */
     constructor(client, guild) {
+        super(client)
+
+        if (!('unavailable' in guild)) throw new RangeError("Invalid guild object.")
+
         /**
          * The availability of the guild.
          * @readonly
          */
         this.available = !guild.unavailable
         if (this.available) {
+            this.some = "AAAAAAAAAAA"
             /**
              * The guild's system channel. Used for built-in join
              * and boost messages.
@@ -37,12 +43,10 @@ class Guild {
              */
             this.large = guild.large
 
-            // /**
-            //  * A set of cached channels.
-            //  */
-            // for (const channel of guild.channels) {
-            // create channel class
-            // }
+            /**
+             * A set of cached channels.
+             */
+            this.channels = new ChannelManager(this.client, guild.channels)
 
             /**
              * The preferred voice channel location of this guild
@@ -78,9 +82,7 @@ class Guild {
              * The guild's channels.
              * @readonly
              */
-            this.channels = new Map()
-            for (const channel of guild.channels) 
-                this.channels.set(channel.id, channel)
+            this.channels = new ChannelManager()
             
         }
         /**
@@ -88,12 +90,6 @@ class Guild {
          * @readonly
          */
         Object.defineProperty(this, '_id', { value: guild.id })
-        
-        /**
-         * The client this guild comes from.
-         * @readonly
-         */
-        Object.defineProperty(this, 'client', { value: client })
     }
 
     /**
@@ -112,6 +108,7 @@ class Guild {
     get id() {
         return this._id
     }
+
 }
 
 module.exports = Guild

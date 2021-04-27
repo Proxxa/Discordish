@@ -1,7 +1,7 @@
 const EventEmitter = require("events")
 const GatewayManager = require('../websockets/GatewayManager.js')
-const GuildManager = require('../guild/GuildManager.js')
-const UserManager = require('../user/UserManager.js')
+const GuildManager = require('../managers/GuildManager.js')
+const UserManager = require('../managers/UserManager.js')
 const Message = require("../channel/Message.js")
 
 class Client extends EventEmitter {
@@ -46,7 +46,8 @@ const defaultClientOptions = {
         version: 8,
         encoding: 'json'
     },
-    intents: (1 << 0) + (1 << 6) +(1 << 9) + (1 << 12)
+    intents: (1 << 0) + (1 << 6) +(1 << 9) + (1 << 12),
+    cacheLifetime: false
 }
 
 module.exports = Client
