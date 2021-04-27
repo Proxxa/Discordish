@@ -11,7 +11,7 @@ class GuildManager extends Manager {
     constructor(client, guilds = []) {
         super(client, Guild, guilds)
 
-        for (const g of this.cache.values()) if (!(g instanceof Guild)) this.cache.updateCache(Guild.resolve(g))
+        for (const g of this.cache.values()) this.updateCache(Guild.resolve(g))
     }
 
     /**

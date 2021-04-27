@@ -88,7 +88,7 @@ class Guild extends Base {
          * The guild id.
          * @readonly
          */
-        Object.defineProperty(this, 'id', { value: guild.id })
+        this.id = guild.id
     }
 
     /**

@@ -24,7 +24,7 @@ class Manager {
          * @readonly
          * @type {Object}
          */
-        Object.defineProperty(this, 'cacheType', { value: type })
+        Object.defineProperty(this, 'cacheType', { value: type, enumerable: true })
 
         this.cache = new Map()
         if (content) for (const o of content) {

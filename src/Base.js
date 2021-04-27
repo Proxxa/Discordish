@@ -28,10 +28,12 @@ class Base {
      * Resolves an object, promise, or array of "Resolvables" into an instance of this class.
      * @param {any} resolvable The object to resolve
      */
-    static async resolve(resolvable) {
+    static resolve(resolvable) {
         if (Array.isArray(resolvable)) return resolvable.map(r => this.constructor.resolve(r))
-        if (resolvable instanceof this.constructor) return resolvable
-        if (resolvable instanceof Promise) return this.constructor.resolve(await resolvable)
+        if (resolvable instanceof this) return resolvable
+        if (resolvable instanceof Promise) resolvable.then(body => {
+            return this.resolve(body)
+        })
         if ('id' in resolvable) return new this(this.client, resolvable)
         let error = new RangeError("Invalid resolvable object")
         error.object = resolvable
