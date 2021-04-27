@@ -1,4 +1,3 @@
-const GuildMember = require("../user/GuildMember")
 const Base = require('../Base')
 const ChannelManager = require('../managers/ChannelManager')
 class Guild extends Base {
@@ -89,7 +88,7 @@ class Guild extends Base {
          * The guild id.
          * @readonly
          */
-        Object.defineProperty(this, '_id', { value: guild.id })
+        Object.defineProperty(this, 'id', { value: guild.id })
     }
 
     /**
@@ -98,15 +97,7 @@ class Guild extends Base {
      * @readonly
      */
     get owner() {
-        return this.client.users.fetch(new GuildMember(this._owner))
-    }
-
-    /**
-     * The guild's ID
-     * @readonly
-     */
-    get id() {
-        return this._id
+        return this.client.users.fetch(this._owner)
     }
 
 }

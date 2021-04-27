@@ -42,7 +42,7 @@ class Manager {
      * @returns 
      */
     updateCache(appending) {
-        appending = this.type ? new this.type.constructor.resolve(appending) : appending
+        appending = this.cacheType ? this.cacheType.resolve(appending) : appending
         this.cache.set(appending.id, appending)
         return appending
     }

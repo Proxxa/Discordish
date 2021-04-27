@@ -11,7 +11,7 @@ class ChannelManager extends Manager {
          * @type {Map<Channel>} A map of channels.
          */
         this.cache = new Map()
-        if (channels) for (const o of channels) this.append(new Channel.compelete(o))
+        if (channels) for (const o of channels) this.updateCache(Channel.compelete(o))
     }
 
     /**
