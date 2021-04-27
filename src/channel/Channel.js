@@ -86,6 +86,7 @@ class Channel extends Base {
 
 module.exports = Channel
 
+// Hoisted channel types, played below the declaration of Channel for extension.
 const ChannelTypes = require('./ChannelTypes.js')
 const DMChannel = require('./DMChannel.js')
 const GroupChannel = require('./GroupChannel.js')

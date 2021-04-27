@@ -34,7 +34,7 @@ class Client extends EventEmitter {
         })
 
         this.gateway.on("MESSAGE_CREATE", (data) => {
-            this.emit("message", new Message(this, data.d))
+            this.emit("message", Message.resolve(this, data.d))
         })
     }
 }

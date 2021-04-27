@@ -63,7 +63,6 @@ class Guild extends Base {
              * @private
              */
             Object.defineProperty(this, '_owner', {value: guild.owner_id})
-            this._owner = guild.owner_id
             
             /**
              * The timestamp at which the user joined the guild.
@@ -75,7 +74,7 @@ class Guild extends Base {
              * The guild's channels.
              * @readonly
              */
-            this.channels = new ChannelManager()
+            this.channels = new ChannelManager(this.client, guild.channels)
             
         }
         /**
