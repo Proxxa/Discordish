@@ -20,25 +20,21 @@ class Guild extends Base {
             /**
              * The guild's system channel. Used for built-in join
              * and boost messages.
-             * @readonly
              */
             this.systemChannel = guild.system_channel_id
 
             /**
              * If the guild is marked as NSFW
-             * @readonly
              */
             this.nsfw = guild.nsfw
 
             /**
              * Lazy guilds have this set to true
-             * @readonly
              */
             this.lazy = guild.lazy
 
             /**
              * If the guild is identified as "large"
-             * @readonly
              */
             this.large = guild.large
 
@@ -49,19 +45,16 @@ class Guild extends Base {
 
             /**
              * The preferred voice channel location of this guild
-             * @readonly
              */
             this.locale = guild.preferred_locale
 
             /**
              * This guild's splash image
-             * @readonly
              */
             this.splash = guild.splash
 
             /**
              * The name of the guild
-             * @readonly
              */
             this.name = guild.name
             /**
@@ -69,6 +62,7 @@ class Guild extends Base {
              * @readonly
              * @private
              */
+            Object.defineProperty(this, '_owner', {value: guild.owner_id})
             this._owner = guild.owner_id
             
             /**

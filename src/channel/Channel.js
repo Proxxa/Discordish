@@ -12,13 +12,13 @@ class Channel extends Base {
          * The channel type.
          * @readonly
          */
-        this.type = ChannelTypes[data.type]
+        Object.defineProperty(this, 'type', {value: ChannelTypes[data.type]})
 
         /**
          * The channel id.
          * @readonly
          */
-        this.id = data.id
+        Object.defineProperty(this, 'id', {value: data.id, enumerable: true})
     }
 
     /**

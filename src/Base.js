@@ -20,6 +20,7 @@ class Base {
         /**
          * The time at which this object was instantiated.
          * @type {Number}
+         * @private
          */
         Object.defineProperty(this, 'instantiated', { value: Date.now() })
     }
