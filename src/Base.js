@@ -30,7 +30,7 @@ class Base {
      * @param {any} resolvable The object to resolve
      */
     static resolve(resolvable) {
-        if (Array.isArray(resolvable)) return resolvable.map(r => this.constructor.resolve(r))
+        if (Array.isArray(resolvable)) return resolvable.map(r => this.resolve(r))
         if (resolvable instanceof this) return resolvable
         if (resolvable instanceof Promise) resolvable.then(body => {
             return this.resolve(body)
