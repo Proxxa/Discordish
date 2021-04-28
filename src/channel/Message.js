@@ -1,4 +1,5 @@
 const GuildMember = require('../user/GuildMember.js')
+const User = require('../user/User.js')
 class Message {
     /**
      * 
@@ -11,88 +12,71 @@ class Message {
          * @type {Client}
          * @readonly
          */
-        this.client = client
+        Object.defineProperty(this, 'client', {value: client})
 
         /**
          * The content of the message.
          * @type {String}
          * @readonly
          */
-        this.content = data.content
+        Object.defineProperty(this, 'content', {value: data.content, enumerable: true})
 
         /**
          * The message's ID
          * @type {String}
          * @readonly
          */
-        this.id = data.id
+        Object.defineProperty(this, 'id', {value: data.id, enumerable: true})
 
         /**
-         * The id of the message's guild.
-         * @type {String}
+         * The guild this message originates from.
+         * @type {Guild}
          * @readonly
-         * @private
          */
+        Object.defineProperty(this, 'guild', {value: this.client.guilds.fetch(data.guild_id, true, true), enumerable: true })
         this._guild = data.guild_id
 
         /**
-         * The id of the message's channel.
-         * @type {Object}
+         * The channel this message originates from.
+         * @type {Channel}
          * @readonly
          */
-        this._channel = data.channel_id
+        Object.defineProperty(this, 'channel', { value: this.guild.channels.fetch(data.channel_id, true, true), enumerable: true })
 
         /**
          * Whether or not the message is a TTS message
          * @type {Boolean}
          * @readonly
          */
-        this.tts = data.tts
+        Object.defineProperty(this, 'tts', {value: data.tts, enumerable: true})
 
         /**
          * The date the message was created
          * @type {String}
          * @readonly
          */
-        this.createdTimestamp = data.timestamp
+        Object.defineProperty(this, 'createdTimestamp', { value: data.timestamp, enumerable: true})
 
         /**
          * The raw data of the message replied to
          * @readonly
          */
-        this._repliedMessage = data.referenced_message
+        Object.defineProperty(this, 'repliedMessage', { value: Object.freeze(new Message(this.client, data.referenced_message)), enumerable: true })
 
         /**
-         * The id of the author of the message
+         * The author of the message
          * @readonly
-         * @type {String}
+         * @type {User}
          * @private
          */
-        this._author = data.author.id
+        Object.defineProperty(this, 'author', { value: User.resolve(this.client.users.fetch(data.author.id, true, true)), enumerable: true})
 
         /**
          * An array of raw mention data
          * @type {Array<GuildMember>}
          * @readonly
-         * @private
          */
-        this._mentions = data.mentions
-    }
-
-    /**
-     * The message this message has replied to.
-     * @readonly
-     */
-    get repliedMessage() {
-        return new Message(this.client, this._repliedMessage)
-    }
-
-    /**
-     * The message this channel was sent in.
-     * @readonly
-     */
-    get channel() {
-        return this.guild.channels.get(this._channel)
+        Object.defineProperty(this, '_mentions', {value: data.mentions})
     }
 
     /**
@@ -101,19 +85,8 @@ class Message {
      */
     get mentions() {
         let mentioned = []
-        for (const user of this._mentions) 
-            mentioned.push(new GuildMember(this.client.users.fetch(user.id), this.guild))
-        
+        for (const user of this._mentions) mentioned.push(new GuildMember(this.client, this.client.users.fetch(user.id), this.guild))
         return mentioned
-    }
-
-    /**
-     * The guild this message originates from.
-     * @type {Promise<Guild>}
-     * @readonly
-     */
-    get guild() {
-        return this.client.guilds.fetch(this._guild)
     }
 }
 

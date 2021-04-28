@@ -93,6 +93,25 @@ class Guild extends Base {
         return this.client.users.fetch(this._owner)
     }
 
+    fetch(cache = true, forceApi = false) {
+        return new Promise((resolve, reject) => {
+            if (this.client.guilds.has(this.id) && !forceApi)
+                if (this.client.guilds.get(this.id).instantiated >= this.instantiated && !forceApi) resolve(this.client.guilds.get(this.id))
+                else if (this.instantiated > this.client.guilds.get(this.id) && !forceApi) {
+                    if (cache) this.client.guilds.updateCache(this)
+                    resolve(this)
+                } else fetch('https://discord.com/api/guilds/' + new URLSearchParams(this.id))
+                    .then(res => res.json())
+                    .then(res => {
+                        if (cache) {
+                            this.client.guilds.updateCache(res)
+                            resolve(this.client.guilds.cache.get(res.id))
+                        } else resolve(Guild.resolve(res))
+                    }).catch(reject)
+            reject(new Error("Could not fetch?"))
+        })
+    }
+
 }
 
 module.exports = Guild

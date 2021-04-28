@@ -26,8 +26,8 @@ class User extends Base {
                     .then(res => {
                         if (cache) {
                             this.client.users.updateCache(res)
-                            resolve(this.cache.get(res.id))
-                        } else resolve(this.cache.type.resolve(res))
+                            resolve(this.client.users.cache.get(res.id))
+                        } else resolve(User.resolve(res))
                     }).catch(reject)
             reject(new Error("Could not fetch?"))
         })
