@@ -1,5 +1,6 @@
 const Channel = require("../channel/Channel")
 const Manager = require('./Manager')
+const fetch = require('node-fetch')
 
 class ChannelManager extends Manager {
 
@@ -26,16 +27,17 @@ class ChannelManager extends Manager {
             if (typeof identifiable === 'number') identifiable = identifiable.toString()
             if (this.cache.has(identifiable) && !forceApi) resolve(this.cache.get(identifiable))
             else {
-                for (const channel of this.cache) 
-                    if (channel[1].name === identifiable && !forceApi) resolve(channel)
+                for (const chan of this.cache) 
+                    if (chan[1].name === identifiable && !forceApi) resolve(chan)
                     
                 fetch('https://discord.com/api/channels/' + new URLSearchParams(identifiable))
                     .then(res => res.json())
                     .then(res => {
+                        let completed = Channel.complete(res)
                         if (cache) {
-                            this.cache.set(res.id, Channel.complete(res))
+                            this.cache.set(res.id, completed)
                             resolve(this.cache.get(res.id))
-                        } else resolve(Channel.complete(res))
+                        } else resolve(completed)
                     }).catch(reject)
             }
         }

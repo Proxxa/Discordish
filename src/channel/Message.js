@@ -1,5 +1,4 @@
 const GuildMember = require('../user/GuildMember.js')
-const User = require('../user/User.js')
 class Message {
     /**
      * 
@@ -7,6 +6,7 @@ class Message {
      * @param {Object} data The data for the message
      */
     constructor(client, data) {
+        console.log("Constructor called.")
         /**
          * The client this message was instantiated from
          * @type {Client}
@@ -33,15 +33,14 @@ class Message {
          * @type {Guild}
          * @readonly
          */
-        Object.defineProperty(this, 'guild', {value: this.client.guilds.fetch(data.guild_id, true, true), enumerable: true })
-        this._guild = data.guild_id
+        this.client.guilds.fetch(data.guild_id).then(g => Object.defineProperty(this, 'guild', {value: g, enumerable: true }))
 
         /**
          * The channel this message originates from.
          * @type {Channel}
          * @readonly
          */
-        Object.defineProperty(this, 'channel', { value: this.guild.channels.fetch(data.channel_id, true, true), enumerable: true })
+        this.client.channels.fetch(data.channel_id).then(cha => Object.defineProperty(this, 'channel', { value: cha, enumerable: true}))
 
         /**
          * Whether or not the message is a TTS message
@@ -61,15 +60,14 @@ class Message {
          * The raw data of the message replied to
          * @readonly
          */
-        Object.defineProperty(this, 'repliedMessage', { value: Object.freeze(new Message(this.client, data.referenced_message)), enumerable: true })
+        Object.defineProperty(this, 'repliedMessage', { value: data.referenced_message ? Object.freeze(new Message(this.client, data.referenced_message)): null, enumerable: true })
 
         /**
          * The author of the message
          * @readonly
          * @type {User}
-         * @private
          */
-        Object.defineProperty(this, 'author', { value: User.resolve(this.client.users.fetch(data.author.id, true, true)), enumerable: true})
+        this.client.users.fetch(data.author.id).then(u => Object.defineProperty(this, 'author', { value: u, enumerable: true}))
 
         /**
          * An array of raw mention data

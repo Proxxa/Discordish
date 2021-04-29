@@ -31,7 +31,8 @@ class GuildManager extends Manager {
                 fetch('https://discord.com/api/guilds/' + new URLSearchParams(guildIdentifiable))
                     .then(res => res.json())
                     .then(res => {
-                        this.cache.set(res.id, new Guild(res))
+                        console.log('The guild.', res)
+                        this.cache.set(res.id, Guild.resolve(res))
                         resolve(this.cache.get(res.id))
                     }).catch(reject)
             }

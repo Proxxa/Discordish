@@ -112,7 +112,7 @@ class GatewayManager extends EventEmitter {
                 this.client.emit('debug', `[WS] WebSocket received a heartbeat ACK`)
             }
             if (dat.s !== null) this.lastSeq = dat.s
-            if (dat.op == 0) this.emit(dat.t, dat)
+            if (dat.op === 0) this.emit(dat.t, dat)
         })
         ws.once('message', data => {
             data = JSON.parse(data)

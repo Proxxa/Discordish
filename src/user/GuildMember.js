@@ -15,14 +15,13 @@ class GuildMember extends User {
          * @private
          * @readonly
          */
-        Object.defineProperty(this, '_user', { value: user })
+        Object.defineProperty(this, '_user', { value: User.resolve(user), enumerable: true })
 
-
-        this.guild = guild
-    }
-
-    get user() {
-        return new User(this.client, this._user)
+        /**
+         * The guild this GuildMember is from.
+         * @readonly
+         */
+        Object.defineProperty(this, 'guild', { value: guild, enumerable: true })
     }
 
     fetch(cache = true, forceApi = false) {
@@ -44,6 +43,20 @@ class GuildMember extends User {
         })
     }
 
+
+    /**
+     * Resolves an object, promise, or array of "Resolvables" into an instance of this class.
+     * @param {GuildMemberResolvable} resolvable The object to resolve
+     */
+    static resolve(resolvable) {
+        if (Array.isArray(resolvable)) return resolvable.map(r => this.resolve(r))
+        if (resolvable instanceof this) return resolvable
+        if (resolvable instanceof Promise) resolvable.then(body => {
+            return this.resolve(body)
+        })
+        return new this(this.client, resolvable, this.guild)
+        // Does not error. Must attempt to create an instance.
+    }
 }
 
 module.exports = GuildMember
