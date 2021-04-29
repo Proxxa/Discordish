@@ -6,7 +6,6 @@ class Message {
      * @param {Object} data The data for the message
      */
     constructor(client, data) {
-        console.log("Constructor called.")
         /**
          * The client this message was instantiated from
          * @type {Client}

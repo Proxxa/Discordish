@@ -37,7 +37,6 @@ class Client extends EventEmitter {
         })
 
         this.gateway.on("MESSAGE_CREATE", (data) => {
-            console.log("Event emitted.")
             let messageData = data.d
             let message = new Message(this, messageData)
             setTimeout(() => this.emit("message", message), 1)
