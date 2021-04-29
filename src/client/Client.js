@@ -4,6 +4,7 @@ const GuildManager = require('../managers/GuildManager.js')
 const UserManager = require('../managers/UserManager.js')
 const Message = require("../channel/Message.js")
 const ChannelManager = require("../managers/ChannelManager.js")
+const Guild = require('../guild/Guild')
 
 class Client extends EventEmitter {
     /**
@@ -32,7 +33,7 @@ class Client extends EventEmitter {
         })
 
         this.gateway.on("GUILD_CREATE", (data) => {
-            this.guilds.updateCache(data.d)
+            this.guilds.updateCache(Guild.resolve(data.d, this))
             for (const channel of data.d.channels) this.channels.updateCache(channel)
         })
 

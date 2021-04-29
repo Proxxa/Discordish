@@ -114,21 +114,28 @@ class Guild extends Base {
     }
 
     /**
+     * Edits the guild using the api.
+     * @param {Object} content The parts to update
+     * @private
+     * @returns {Promise<Guild>} The new guild
+     */
+    edit(content = {}) {
+        return new Promise((resolve, reject) => {
+            fetch('https://discord.com/api/guilds/' + this.id, { method: 'PATCH', body: JSON.stringify(content), 'headers': { 'Authorization': 'Bot ' + this.client.token, 'Content-Type': 'application/json' } })
+                .then(res => res.json())
+                .then(body => {
+                    resolve(this.client.guilds.cache.get(body.id))
+                }).catch(reject)
+        })
+    }
+
+    /**
      * Sets the name of the guild.
      * @param {string} name The new name of the guild
      * @returns {Promise<Guild>} The updated guild.
      */
     setName(name) {
-        return new Promise((resolve, reject) => {
-            fetch('https://discord.com/api/guilds/' + this.id, { method: 'PATCH', body: { 'name': name } })
-                .then(res => res.json())
-                .then(body => {
-                    console.log(this)
-                    console.log(body)
-                    this.client.guilds.updateCache(body)
-                    resolve(this.client.guilds.cache.get(body.id))
-                }).catch(reject)
-        })
+        return this.edit({ 'name': name })
     }
 
 }

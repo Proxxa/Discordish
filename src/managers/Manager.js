@@ -42,7 +42,7 @@ class Manager {
      * @returns 
      */
     updateCache(appending) {
-        appending = this.cacheType ? this.cacheType.resolve(appending) : appending
+        appending = this.cacheType ? this.cacheType.resolve(appending, this.client) : appending
         this.cache.set(appending.id, appending)
         return appending
     }
@@ -54,7 +54,7 @@ class Manager {
     resolve(resolvable) {
         if (resolvable instanceof String && this.cache.has(resolvable)) return this.cache.get(resolvable)
         if (this.cacheType !== Object) if (resolvable instanceof this.cacheType) return resolvable
-        return this.cacheType.resolve(resolvable)
+        return this.cacheType.resolve(resolvable, this.client)
     }
 }
 

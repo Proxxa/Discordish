@@ -12,7 +12,7 @@ class ChannelManager extends Manager {
          * @type {Map<Channel>} A map of channels.
          */
         this.cache = new Map()
-        if (channels) for (const o of channels) this.updateCache(Channel.compelete(o))
+        if (channels) for (const o of channels) this.updateCache(Channel.compelete(o, this.client))
     }
 
     /**
@@ -33,7 +33,7 @@ class ChannelManager extends Manager {
                 fetch('https://discord.com/api/channels/' + identifiable)
                     .then(res => res.json())
                     .then(res => {
-                        let completed = Channel.complete(res)
+                        let completed = Channel.complete(res, this.client)
                         if (cache) {
                             this.cache.set(res.id, completed)
                             resolve(this.cache.get(res.id))

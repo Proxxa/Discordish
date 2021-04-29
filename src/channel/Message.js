@@ -32,7 +32,10 @@ class Message {
          * @type {Guild}
          * @readonly
          */
-        this.client.guilds.fetch(data.guild_id).then(g => Object.defineProperty(this, 'guild', {value: g, enumerable: true }))
+        this.client.guilds.fetch(data.guild_id).then(g => {
+            console.log("Got a guild? ", g)
+            Object.defineProperty(this, 'guild', {value: g, enumerable: true })
+        })
 
         /**
          * The channel this message originates from.
@@ -59,7 +62,7 @@ class Message {
          * The raw data of the message replied to
          * @readonly
          */
-        Object.defineProperty(this, 'repliedMessage', { value: data.referenced_message ? Object.freeze(new Message(this.client, data.referenced_message)): null, enumerable: true })
+        Object.defineProperty(this, 'repliedMessage', { value: data.referenced_message ? Object.freeze(new Message(this.client, data.referenced_message)) : null, enumerable: true })
 
         /**
          * The author of the message

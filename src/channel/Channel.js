@@ -38,15 +38,16 @@ class Channel extends Base {
      * to the highest possible extension.
      * @param {ChannelResolvable} completable Some object to fill out into a full channel
      */
-    static compelete(completable) {
+    static compelete(completable, client) {
+        if (!client) throw new RangeError("Attached client required.")
         if ('type' in completable)
             switch (completable.type) {
-            default: return Channel.resolve(completable)
-            case 0: return TextChannel.resolve(completable)
-            case 1: return DMChannel.resolve(completable)
-            case 2: return VoiceChannel.resolve(completable)
-            case 3: return GroupChannel.resolve(completable)
-            case 5: return NewsChannel.resolve(completable)
+            default: return Channel.resolve(completable,client)
+            case 0: return TextChannel.resolve(completable,client)
+            case 1: return DMChannel.resolve(completable,client)
+            case 2: return VoiceChannel.resolve(completable,client)
+            case 3: return GroupChannel.resolve(completable,client)
+            case 5: return NewsChannel.resolve(completable,client)
             }
         else {
             const err = new RangeError("Invalid completable object")
