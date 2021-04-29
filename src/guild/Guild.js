@@ -406,6 +406,28 @@ class Guild extends Base {
         features.forEach(oldFeats.add)
         return this.edit({ 'features': Array.from(oldFeats) })
     }
+
+    /**
+     * Deletes the guild, as long as you're the guild owner.
+     * @returns {Promise<Boolean|Error>} Returns true if successful. Otherwise, rejects with an error.
+     */
+    delete() {
+        if (this.owner.id !== this.client.user.id) throw Error("Must be the guild owner to delete a guild.")
+        return new Promise((resolve, reject) => {
+            fetch('https://discord.com/api/guilds/' + this.id, { method: 'DELETE', headers: { 'Authorization': 'Bot' + this.client.token }})
+                .then(res => res.json())
+                .then(res => {
+                    if (!JSON.stringify(res).includes('204')) {
+                        let error = new Error("Could not delete guild.")
+                        error.response = res
+                        reject(error)
+                    }
+                    this.client.guilds.cache.delete(this.id)
+                    resolve(true)
+                }).catch(reject)
+            reject(new Error("Could not delete?"))
+        })
+    }
 }
 
 module.exports = Guild
