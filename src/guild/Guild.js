@@ -110,7 +110,7 @@ class Guild extends Base {
                 else if (this.instantiated > this.client.guilds.get(this.id) && !forceApi) {
                     if (cache) this.client.guilds.updateCache(this)
                     resolve(this)
-                } else fetch('https://discord.com/api/guilds/' + new URLSearchParams(this.id))
+                } else fetch('https://discord.com/api/guilds/' + this.id, { method: 'GET', headers: { 'Authorization': 'Bot' + this.client.token }})
                     .then(res => res.json())
                     .then(res => {
                         if (cache) {
