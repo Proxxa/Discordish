@@ -15,7 +15,7 @@ class Base {
          * The client that instantiated this object.
          * @type {Client}
          */
-        Object.defineProperty(this, 'client', { value: client })
+        Object.defineProperty(this, 'client', { value: client, enumerable: true })
 
         /**
          * The time at which this object was instantiated.
@@ -33,8 +33,10 @@ class Base {
         if (Array.isArray(resolvable)) return resolvable.map(r => this.resolve(r))
         if (resolvable instanceof this) return resolvable
         if (resolvable instanceof Promise) resolvable.then(body => {
+            console.log('\nPromised.\n', this, '\n', resolvable)
             return this.resolve(body)
         })
+        console.log('\nConstructing.\n', this, '\n', resolvable)
         return new this(this.client, resolvable)
         // Does not error. Must attempt to create an instance.
     }

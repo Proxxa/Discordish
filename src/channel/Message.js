@@ -66,6 +66,7 @@ class Message {
          * @readonly
          * @type {User}
          */
+        console.log('author id', data.author.id)
         this.client.users.fetch(data.author.id).then(u => Object.defineProperty(this, 'author', { value: u, enumerable: true}))
 
         /**

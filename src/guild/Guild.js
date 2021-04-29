@@ -1,5 +1,6 @@
 const Base = require('../Base')
 const ChannelManager = require('../managers/ChannelManager')
+const fetch = require('node-fetch')
 class Guild extends Base {
     /**
      * 
@@ -81,7 +82,7 @@ class Guild extends Base {
          * The guild id.
          * @readonly
          */
-        this.id = guild.id
+        Object.defineProperty(this, 'id', {value: guild.id, enumerable:true})
     }
 
     /**
@@ -109,6 +110,24 @@ class Guild extends Base {
                         } else resolve(Guild.resolve(res))
                     }).catch(reject)
             reject(new Error("Could not fetch?"))
+        })
+    }
+
+    /**
+     * Sets the name of the guild.
+     * @param {string} name The new name of the guild
+     * @returns {Promise<Guild>} The updated guild.
+     */
+    setName(name) {
+        return new Promise((resolve, reject) => {
+            fetch('https://discord.com/api/guilds/' + this.id, { method: 'PATCH', body: { 'name': name } })
+                .then(res => res.json())
+                .then(body => {
+                    console.log(this)
+                    console.log(body)
+                    this.client.guilds.updateCache(body)
+                    resolve(this.client.guilds.cache.get(body.id))
+                }).catch(reject)
         })
     }
 

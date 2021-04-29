@@ -26,7 +26,7 @@ class UserManager extends Manager {
             if (this.cache.has(userIdentifiable) && !forceApi) resolve(this.cache.get(userIdentifiable))
             else {
                 for (const user of this.cache) if (user[1].tag === userIdentifiable && !forceApi) resolve(user)
-                fetch('https://discord.com/api/users/' + new URLSearchParams(userIdentifiable))
+                fetch('https://discord.com/api/users/' + userIdentifiable)
                     .then(res => res.json())
                     .then(res => {
                         this.updateCache(res)

@@ -30,7 +30,7 @@ class ChannelManager extends Manager {
                 for (const chan of this.cache) 
                     if (chan[1].name === identifiable && !forceApi) resolve(chan)
                     
-                fetch('https://discord.com/api/channels/' + new URLSearchParams(identifiable))
+                fetch('https://discord.com/api/channels/' + identifiable)
                     .then(res => res.json())
                     .then(res => {
                         let completed = Channel.complete(res)
