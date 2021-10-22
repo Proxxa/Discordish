@@ -1,4 +1,5 @@
 const Base = require('../Base')
+const MemberManager = require('../managers/MemberManager')
 const ChannelManager = require('../managers/ChannelManager')
 const fetch = require('node-fetch')
 const VoiceChannel = require('../channel/VoiceChannel')
@@ -46,6 +47,11 @@ class Guild extends Base {
              * A set of cached channels.
              */
             this.channels = new ChannelManager(this.client, guild.channels)
+
+            /**
+             * A set of cached guild members
+             */
+            this.members = new MemberManager(this.client, this)
 
             /**
              * The preferred voice channel location of this guild
