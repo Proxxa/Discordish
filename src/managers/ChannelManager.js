@@ -4,6 +4,11 @@ const fetch = require('node-fetch')
 
 class ChannelManager extends Manager {
 
+    /**
+     * A Manager for managing channels cached in the client
+     * @param {Client} client
+     * @param {Array<Object>} channels 
+     */
     constructor(client, channels = []) {
         super(client, Channel, channels)
 
@@ -16,7 +21,7 @@ class ChannelManager extends Manager {
     }
 
     /**
-     * 
+     * Searches for a channel.
      * @param {Channel|string|number} identifiable The name, id, or object of a channel.
      * @param {Boolean} cache Whether or not to cache the object.
      * @param {Boolean} forceApi Whether or not to skip checking the cache and immediately call the API.
