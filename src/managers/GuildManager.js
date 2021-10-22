@@ -4,7 +4,7 @@ const fetch = require('node-fetch')
 
 class GuildManager extends Manager {
     /**
-     * 
+     * A Manager for managing guilds cached in the client.
      * @param {Client} client 
      * @param {Array<GuildResolvable>} guilds 
      */

@@ -49,6 +49,16 @@ class GuildChannel extends Channel {
     get guild() {
         return this.client.guilds.fetch(this._guild)
     }
+
+    /**
+     * Change the location of the channel on the channel list
+     * @param {Number} pos The new position of the channel
+     */
+    setPosition(pos) {
+        this.edit({
+            position: pos
+        })
+    }
 }
 
 module.exports = GuildChannel

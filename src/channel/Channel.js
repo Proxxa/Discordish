@@ -83,6 +83,22 @@ class Channel extends Base {
         }
         )}
 
+    /**
+     * Edits the guild using the api.
+     * @param {Object} content The parts to update
+     * @private
+     * @returns {Promise<Channel>} The new guild
+     */
+    edit(content = {}) {
+        return new Promise((resolve, reject) => {
+            fetch('https://discord.com/api/channels/' + this.id, { method: 'PATCH', body: JSON.stringify(content), 'headers': { 'Authorization': 'Bot ' + this.client.token, 'Content-Type': 'application/json' } })
+                .then(res => res.json())
+                .then(body => {
+                    resolve(this.client.channels.cache.get(body.id))
+                }).catch(reject)
+        })
+    }
+
 }
 
 module.exports = Channel

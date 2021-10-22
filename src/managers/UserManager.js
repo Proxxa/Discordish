@@ -4,7 +4,7 @@ const Manager = require('./Manager')
 
 class UserManager extends Manager {
     /**
-     * 
+     * A Manager for managing users cached in the client
      * @param {Client} client
      * @param {Array<Object>} users 
      */
