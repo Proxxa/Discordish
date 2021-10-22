@@ -37,8 +37,6 @@ class Manager {
     /**
      * Updates the cache with this object.
      * @param {Object} appending The object to append
-     * @param {Boolean} cache Whether or not to cache this object
-     * @param  {...any} extra Additional options for building of the object
      * @returns 
      */
     updateCache(appending) {
