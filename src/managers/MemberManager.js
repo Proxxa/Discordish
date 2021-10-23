@@ -27,10 +27,10 @@ class MemberManager extends Manager {
             if (this.cache.has(memberIdentifiable) && !forceApi) resolve(this.cache.get(memberIdentifiable))
             else {
                 for (const user of this.cache) if (user[1].tag === memberIdentifiable && !forceApi) resolve(user)
-                fetch('https://discord.com/api/guilds/' + this.guild.id + '/members/' + memberIdentifiable)
+                fetch('https://discord.com/api/guilds/' + this.guild.id + '/members/' + memberIdentifiable, { method: 'GET', 'headers': { 'Authorization': 'Bot ' + this.client.token } })
                     .then(res => res.json())
                     .then(res => {
-                        this.updateCache(res)
+                        this.updateCache(res, this.guild)
                         resolve(this.cache.get(res.id))
                     }).catch(reject)
             }
@@ -45,11 +45,13 @@ class MemberManager extends Manager {
      */
     listMembers(limit = 1, after = 0) {
         return new Promise((resolve, reject) => {
-            fetch('https://discord.com/api/guilds/' + this.guild.id + '/members?limit=' + limit + '&after=' + after)
+            fetch('https://discord.com/api/guilds/' + this.guild.id + '/members?limit=' + limit + '&after=' + after, { method: 'GET', 'headers': { 'Authorization': 'Bot ' + this.client.token } })
                 .then(res => res.json())
                 .then(res => {
-                    this.updateCache(res)
-                    resolve(res.map(m => this.cache.get(m.id)))
+                    this.updateCache(res, this.guild)
+                    let toRet = []
+                    for (let memb of res) toRet.push(this.cache.get(memb.id))
+                    resolve(toRet)
                 }).catch(reject)
         })
     }
@@ -62,11 +64,13 @@ class MemberManager extends Manager {
      */
     searchMembers(query, limit = 1) {
         return new Promise((resolve, reject) => {
-            fetch('https://discord.com/api/guilds/' + this.guild.id + '/members/search?query=' + encodeURIComponent(query) + '&limit=' + limit)
+            fetch('https://discord.com/api/guilds/' + this.guild.id + '/members/search?query=' + encodeURIComponent(query) + '&limit=' + limit, { method: 'GET', 'headers': { 'Authorization': 'Bot ' + this.client.token } })
                 .then(res => res.json())
                 .then(res => {
-                    this.updateCache(res)
-                    resolve(res.map(m => this.cache.get(m.id)))
+                    this.updateCache(res, this.guild)
+                    let toRet = []
+                    for (let memb of res) toRet.push(this.cache.get(memb.id))
+                    resolve(toRet)
                 }).catch(reject)
         })
     }

@@ -43,7 +43,7 @@ class Manager {
         if (Array.isArray(appending)) {
             let toReturn = []
             for (const app of appending) {
-                let resolved = this.cacheType.resolve(app, ...args)
+                let resolved = this.cacheType.resolve(app, this.client, ...args)
                 this.cache.set(resolved.id, resolved)
                 toReturn.push(resolved)
             }

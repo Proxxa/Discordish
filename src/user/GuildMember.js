@@ -15,7 +15,7 @@ class GuildMember extends User {
          * @private
          * @readonly
          */
-        Object.defineProperty(this, '_user', { value: User.resolve(user), enumerable: true })
+        Object.defineProperty(this, '_user', { value: User.resolve(this.client, user), enumerable: true })
 
         /**
          * The guild this GuildMember is from.
