@@ -62,7 +62,7 @@ class Channel extends Base {
      * @param {Channel|string|number} identifiable The name, id, or object of a channel.
      * @param {Boolean} cache Whether or not to cache the object.
      * @param {Boolean} forceApi Whether or not to skip checking the cache and immediately call the API.
-     * @returns 
+     * @returns {Promise}
      */
     fetch(cache = true, forceApi = false) {
         return new Promise((resolve, reject) => {

@@ -37,7 +37,7 @@ class Manager {
     /**
      * Updates the cache with this object.
      * @param {Object|Array<Object>} appending The object to append
-     * @returns 
+     * @returns {Object}
      */
     updateCache(appending, ...args) {
         if (Array.isArray(appending)) {

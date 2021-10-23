@@ -14,7 +14,7 @@ class ChannelManager extends Manager {
 
         /**
          * The cached channels.
-         * @type {Map<Channel>} A map of channels.
+         * @type {Map<Channel>}
          */
         this.cache = new Map()
         if (channels) for (const o of channels) this.updateCache(Channel.compelete(o, this.client))
@@ -25,7 +25,7 @@ class ChannelManager extends Manager {
      * @param {Channel|string|number} identifiable The name, id, or object of a channel.
      * @param {Boolean} cache Whether or not to cache the object.
      * @param {Boolean} forceApi Whether or not to skip checking the cache and immediately call the API.
-     * @returns 
+     * @returns {Promise<Channel>}
      */
     fetch(identifiable, cache = true, forceApi = false) {
         return new Promise((resolve, reject) => {

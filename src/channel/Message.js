@@ -40,7 +40,6 @@ class Message {
         /**
          * The channel this message originates from.
          * @name channel
-         * @property
          * @type {Channel}
          * @readonly
          */
