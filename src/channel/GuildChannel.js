@@ -52,11 +52,31 @@ class GuildChannel extends Channel {
 
     /**
      * Change the location of the channel on the channel list
-     * @param {Number} pos The new position of the channel
+     * @param {Number|String} pos The new position of the channel
      */
     setPosition(pos) {
         this.edit({
-            position: pos
+            position: Number(pos)
+        })
+    }
+
+    /**
+     * Change the channel category the channel is in. Null if no category.
+     * @param {String|Number|null} [snowflake=null] The ID of the new parent category.
+     */
+    setParent(snowflake = null) {
+        this.edit({
+            parent_id: String(snowflake)
+        })
+    }
+
+    /**
+     * Change the name of the channel
+     * @param {String} name The new position of the channel
+     */
+    setName(name) {
+        this.edit({
+            name: name
         })
     }
 }
