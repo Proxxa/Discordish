@@ -11,7 +11,7 @@ class Message {
          * @type {Client}
          * @readonly
          */
-        Object.defineProperty(this, 'client', {value: client})
+        Object.defineProperty(this, 'client', {value: client, enumerable: false})
 
         /**
          * The content of the message.
@@ -33,16 +33,17 @@ class Message {
          * @readonly
          */
         this.client.guilds.fetch(data.guild_id).then(g => {
-            console.log("Got a guild? ", g)
             Object.defineProperty(this, 'guild', {value: g, enumerable: true })
+            g.channels.fetch(data.channel_id).then(cha => Object.defineProperty(this, 'channel', { value: cha, enumerable: true}))
         })
 
         /**
          * The channel this message originates from.
+         * @name channel
+         * @property
          * @type {Channel}
          * @readonly
          */
-        this.client.channels.fetch(data.channel_id).then(cha => Object.defineProperty(this, 'channel', { value: cha, enumerable: true}))
 
         /**
          * Whether or not the message is a TTS message
@@ -69,12 +70,13 @@ class Message {
          * @readonly
          * @type {User}
          */
-        console.log('author id', data.author.id)
-        this.client.users.fetch(data.author.id).then(u => Object.defineProperty(this, 'author', { value: u, enumerable: true}))
+        Object.defineProperty(this, '_author', { value: this.client.users.fetch(data.author.id)})
 
         /**
          * An array of raw mention data
+         * @property _mentions
          * @type {Array<GuildMember>}
+         * @private
          * @readonly
          */
         Object.defineProperty(this, '_mentions', {value: data.mentions})
@@ -88,6 +90,17 @@ class Message {
         let mentioned = []
         for (const user of this._mentions) mentioned.push(new GuildMember(this.client, this.client.users.fetch(user.id), this.guild))
         return mentioned
+    }
+
+    /**
+     * The author of the message
+     * @readonly
+     * @type {User}
+     */
+    get author() {
+        return this._author.then(user => {
+            return user
+        })
     }
 }
 

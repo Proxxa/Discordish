@@ -23,7 +23,6 @@ class GuildManager extends Manager {
     fetch(guildIdentifiable, forceApi = false) {
         return new Promise((resolve, reject) => {
             if (typeof guildIdentifiable === 'number') guildIdentifiable = guildIdentifiable.toString()
-            console.log("Does the guild have guild " + guildIdentifiable + "?", this.cache.has(guildIdentifiable))
             if (this.cache.has(guildIdentifiable) && !forceApi) resolve(this.cache.get(guildIdentifiable))
             else {
                 for (const guild of this.cache) 
