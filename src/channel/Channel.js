@@ -1,4 +1,5 @@
 const Base = require('../Base')
+const fetch = require('node-fetch')
 class Channel extends Base {
     /**
      * 
@@ -90,6 +91,7 @@ class Channel extends Base {
      * @returns {Promise<Channel>} The new guild
      */
     edit(content = {}) {
+        console.log("EDITING CHANNEL %a, %b", this.id, JSON.stringify(content))
         return new Promise((resolve, reject) => {
             fetch('https://discord.com/api/channels/' + this.id, { method: 'PATCH', body: JSON.stringify(content), 'headers': { 'Authorization': 'Bot ' + this.client.token, 'Content-Type': 'application/json' } })
                 .then(res => res.json())
