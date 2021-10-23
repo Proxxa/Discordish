@@ -36,11 +36,20 @@ class Manager {
 
     /**
      * Updates the cache with this object.
-     * @param {Object} appending The object to append
+     * @param {Object|Array<Object>} appending The object to append
      * @returns 
      */
-    updateCache(appending) {
-        appending = this.cacheType ? this.cacheType.resolve(appending, this.client) : appending
+    updateCache(appending, ...args) {
+        if (Array.isArray(appending)) {
+            let toReturn = []
+            for (const app of appending) {
+                let resolved = this.cacheType.resolve(app, ...args)
+                this.cache.set(resolved.id, resolved)
+                toReturn.push(resolved)
+            }
+            return toReturn
+        }
+        appending = this.cacheType ? this.cacheType.resolve(appending, this.client, ...args) : appending
         this.cache.set(appending.id, appending)
         return appending
     }
@@ -49,10 +58,10 @@ class Manager {
      * Resolves for an object this cache could or does hold
      * @param {string|object} resolvable The id or value of the object to receive.
      */
-    resolve(resolvable) {
+    resolve(resolvable, ...args) {
         if (resolvable instanceof String && this.cache.has(resolvable)) return this.cache.get(resolvable)
         if (this.cacheType !== Object) if (resolvable instanceof this.cacheType) return resolvable
-        return this.cacheType.resolve(resolvable, this.client)
+        return this.cacheType.resolve(resolvable, this.client, ...args)
     }
 }
 

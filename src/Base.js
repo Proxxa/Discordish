@@ -29,15 +29,14 @@ class Base {
      * Resolves an object, promise, or array of "Resolvables" into an instance of this class.
      * @param {any} resolvable The object to resolve
      */
-    static resolve(resolvable, client = null) {
-        if (Array.isArray(resolvable)) return resolvable.map(r => this.resolve(r))
+    static resolve(resolvable, client = null, ...args) {
+        if (Array.isArray(resolvable)) return resolvable.map(r => this.resolve(r, ...args))
         if (resolvable instanceof this) return resolvable
         if (resolvable instanceof Promise) return resolvable.then(body => this.resolve(body))
-        if (client) return new this(client, resolvable)
+        if (client) return new this(client, resolvable, ...args)
         const error = new RangeError("Resolvable was not previously constructed, and client was not passed.")
         error.resolvable = resolvable
         throw error
-        // Does not error. Must attempt to create an instance.
     }
 }
 
