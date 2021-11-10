@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Adding favicon -->
+    
+
+    <!-- Adding meta -->
+    
+
+    <!-- Adding external script-->
+    
+
+    <!-- Adding external style-->
+    
+
+    <!-- Adding scripts-->
+    
+
+    <!-- Adding style-->
+    
+
+    <!-- Adding overlay script-->
+    
+
+    <!-- Adding overlay style-->
+    
+
+
+    <title>
+      ChannelManager
+    </title>
+
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/third-party/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/third-party/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/reset.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-base.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-dark.css">
+    
+    <svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    style="display:none">
+    <defs>
+        <symbol id="copy-icon" viewbox="0 0 488.3 488.3">
+            <g>
+                <path
+                    d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z" />
+                <path
+                    d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z" />
+            </g>
+        </symbol>
+        <symbol id='search-icon' viewBox="0 0 512 512">
+            <g>
+                <g>
+                    <path
+                        d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z" />
+                </g>
+            </g>
+            <g>
+                <g>
+                    <path
+                        d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328    c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z" />
+                </g>
+            </g>
+        </symbol>
+        <symbol id="down-icon" viewBox="0 0 16 16">
+            <path 
+                fill-rule="evenodd" 
+                clip-rule="evenodd" 
+                d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z"
+            >
+            </path>
+        </symbol>
+    </defs>
+</svg>
+  </head>
+
+  <body>
+
+    <nav class="navbar" id="navbar">
+      <div class="navbar-heading" id="navbar-heading"><a href="index.html"><h2 class="navbar-heading-text">Home</h2></a></div><div class="search-box" id="search-box"><div class="search-box-input-container"><input class="search-box-input" type="text" placeholder="Search..." id="search-box-input" /><svg class="search-icon" alt="search-icon"><use xlink:href="#search-icon"></use></svg></div><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-main-content" id="sidebar-main-content"><div class="accordion collapsed" id="8332959" > <h3 class="accordion-heading">Classes<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion collapsed child" id=6922764><div class="accordion-heading child"><a href="Base.html">Base</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="Base.html#.resolve">resolve</a></li></ul></li><li class="accordion collapsed child" id=7142862><div class="accordion-heading child"><a href="BitField.html">BitField</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="BitField.html#.resolve">resolve</a></li><li data-type='method'><a href="BitField.html#add">add</a></li><li data-type='method'><a href="BitField.html#any">any</a></li><li data-type='method'><a href="BitField.html#equals">equals</a></li><li data-type='method'><a href="BitField.html#freeze">freeze</a></li><li data-type='method'><a href="BitField.html#has">has</a></li><li data-type='method'><a href="BitField.html#missing">missing</a></li><li data-type='method'><a href="BitField.html#remove">remove</a></li><li data-type='method'><a href="BitField.html#serialize">serialize</a></li><li data-type='method'><a href="BitField.html#toArray">toArray</a></li></ul></li><li class="accordion collapsed child" id=3934604><div class="accordion-heading child"><a href="Channel.html">Channel</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="Channel.html#.compelete">compelete</a></li><li data-type='method'><a href="Channel.html#fetch">fetch</a></li></ul></li><li class="accordion collapsed child" id=3892806><div class="accordion-heading child"><a href="ChannelManager.html">ChannelManager</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="ChannelManager.html#fetch">fetch</a></li><li data-type='method'><a href="ChannelManager.html#resolve">resolve</a></li><li data-type='method'><a href="ChannelManager.html#updateCache">updateCache</a></li></ul></li><li class="accordion collapsed child" id=7221802><div class="accordion-heading child"><a href="Client.html">Client</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="Client.html#login">login</a></li></ul></li><li class="accordion collapsed child" id=5523629><div class="accordion-heading child"><a href="GatewayManager.html">GatewayManager</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="GatewayManager.html#connect">connect</a></li></ul></li><li class="accordion collapsed child" id=4606143><div class="accordion-heading child"><a href="Guild.html">Guild</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="Guild.html#addFeatures">addFeatures</a></li><li data-type='method'><a href="Guild.html#delete">delete</a></li><li data-type='method'><a href="Guild.html#fetch">fetch</a></li><li data-type='method'><a href="Guild.html#setBanner">setBanner</a></li><li data-type='method'><a href="Guild.html#setDefaultNotifications">setDefaultNotifications</a></li><li data-type='method'><a href="Guild.html#setDescription">setDescription</a></li><li data-type='method'><a href="Guild.html#setDiscoverySplash">setDiscoverySplash</a></li><li data-type='method'><a href="Guild.html#setFeatures">setFeatures</a></li><li data-type='method'><a href="Guild.html#setFilter">setFilter</a></li><li data-type='method'><a href="Guild.html#setIcon">setIcon</a></li><li data-type='method'><a href="Guild.html#setIdleChannel">setIdleChannel</a></li><li data-type='method'><a href="Guild.html#setName">setName</a></li><li data-type='method'><a href="Guild.html#setOwner">setOwner</a></li><li data-type='method'><a href="Guild.html#setRulesChannel">setRulesChannel</a></li><li data-type='method'><a href="Guild.html#setSplash">setSplash</a></li><li data-type='method'><a href="Guild.html#setSystemChannel">setSystemChannel</a></li><li data-type='method'><a href="Guild.html#setSystemFlags">setSystemFlags</a></li><li data-type='method'><a href="Guild.html#setTimeout">setTimeout</a></li><li data-type='method'><a href="Guild.html#setUpdatesChannel">setUpdatesChannel</a></li><li data-type='method'><a href="Guild.html#setVerification">setVerification</a></li></ul></li><li class="accordion collapsed child" id=2510682><div class="accordion-heading child"><a href="GuildChannel.html">GuildChannel</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="GuildChannel.html#fetch">fetch</a></li><li data-type='method'><a href="GuildChannel.html#setName">setName</a></li><li data-type='method'><a href="GuildChannel.html#setParent">setParent</a></li><li data-type='method'><a href="GuildChannel.html#setPosition">setPosition</a></li></ul></li><li class="accordion collapsed child" id=179814><div class="accordion-heading child"><a href="GuildManager.html">GuildManager</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="GuildManager.html#fetch">fetch</a></li><li data-type='method'><a href="GuildManager.html#resolve">resolve</a></li><li data-type='method'><a href="GuildManager.html#updateCache">updateCache</a></li></ul></li><li class="accordion collapsed child" id=6649742><div class="accordion-heading child"><a href="GuildMember.html">GuildMember</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="GuildMember.html#fetch">fetch</a></li></ul></li><li class="accordion collapsed child" id=4623845><div class="accordion-heading child"><a href="Manager.html">Manager</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="Manager.html#resolve">resolve</a></li><li data-type='method'><a href="Manager.html#updateCache">updateCache</a></li></ul></li><li class="accordion collapsed child" id=1596822><div class="accordion-heading child"><a href="MemberManager.html">MemberManager</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="MemberManager.html#fetch">fetch</a></li><li data-type='method'><a href="MemberManager.html#listMembers">listMembers</a></li><li data-type='method'><a href="MemberManager.html#resolve">resolve</a></li><li data-type='method'><a href="MemberManager.html#searchMembers">searchMembers</a></li><li data-type='method'><a href="MemberManager.html#updateCache">updateCache</a></li></ul></li><li class="accordion-list" id=""><a href="Message.html">Message</a></li><li class="accordion collapsed child" id=9420730><div class="accordion-heading child"><a href="TextChannel.html">TextChannel</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="TextChannel.html#fetch">fetch</a></li><li data-type='method'><a href="TextChannel.html#send">send</a></li><li data-type='method'><a href="TextChannel.html#setName">setName</a></li><li data-type='method'><a href="TextChannel.html#setParent">setParent</a></li><li data-type='method'><a href="TextChannel.html#setPosition">setPosition</a></li></ul></li><li class="accordion collapsed child" id=8512163><div class="accordion-heading child"><a href="User.html">User</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="User.html#fetch">fetch</a></li></ul></li><li class="accordion collapsed child" id=7483993><div class="accordion-heading child"><a href="UserManager.html">UserManager</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="UserManager.html#fetch">fetch</a></li></ul></li><li class="accordion collapsed child" id=383010><div class="accordion-heading child"><a href="VoiceChannel.html">VoiceChannel</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="VoiceChannel.html#fetch">fetch</a></li><li data-type='method'><a href="VoiceChannel.html#setName">setName</a></li><li data-type='method'><a href="VoiceChannel.html#setParent">setParent</a></li><li data-type='method'><a href="VoiceChannel.html#setPosition">setPosition</a></li></ul></li></ul> </div><div class="accordion collapsed" id="9404913" > <h3 class="accordion-heading">Events<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="Client.html#event:event:debug">event:debug</a></li><li class="accordion-list" id=""><a href="Client.html#event:event:message">event:message</a></li><li class="accordion-list" id=""><a href="Client.html#event:event:ready">event:ready</a></li></ul> </div><div class="accordion collapsed" id="5948910" > <h3 class="accordion-heading">Global<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="global.html#BitFieldResolvable">BitFieldResolvable</a></li><li class="accordion-list" id=""><a href="global.html#ChannelData">ChannelData</a></li><li class="accordion-list" id=""><a href="global.html#ChannelResolvable">ChannelResolvable</a></li><li class="accordion-list" id=""><a href="global.html#ClientOptions">ClientOptions</a></li><li class="accordion-list" id=""><a href="global.html#DMChannelData">DMChannelData</a></li><li class="accordion-list" id=""><a href="global.html#GatewayOptions">GatewayOptions</a></li><li class="accordion-list" id=""><a href="global.html#GroupChannelData">GroupChannelData</a></li><li class="accordion-list" id=""><a href="global.html#GuildChannelData">GuildChannelData</a></li><li class="accordion-list" id=""><a href="global.html#GuildResolvable">GuildResolvable</a></li><li class="accordion-list" id=""><a href="global.html#MemberResolvable">MemberResolvable</a></li><li class="accordion-list" id=""><a href="global.html#MessageData">MessageData</a></li><li class="accordion-list" id=""><a href="global.html#TextChannelData">TextChannelData</a></li><li class="accordion-list" id=""><a href="global.html#UserData">UserData</a></li><li class="accordion-list" id=""><a href="global.html#UserResolvable">UserResolvable</a></li><li class="accordion-list" id=""><a href="global.html#VoiceChannelData">VoiceChannelData</a></li></ul> </div></div>
+      
+
+    </nav>
+    <div class="navbar-ham" id="navbar-ham">
+      <div>
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+      </div>
+    </div>
+
+    <div id="main" class="main-content">
+      
+      <h1 id='page-title' class="page-title">
+        ChannelManager
+      </h1>
+      
+
+      
+
+
+
+
+<section>
+
+
+<header>
+    
+        
+        <h2>
+        
+        ChannelManager
+        
+        </h2>
+        
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+
+    <h4 class="name" id="ChannelManager">
+        <a href="#ChannelManager">#</a>
+        <span class="type-signature"></span>new ChannelManager<span class="signature">(client, channels)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>A Manager for managing channels cached in the client</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>client</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Client.html">Client</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The client this manager is attached to</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>channels</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="global.html#ChannelResolvable">ChannelResolvable</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An array of channel resolvables</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="managers_ChannelManager.js.html">managers/ChannelManager.js</a>, <a href="managers_ChannelManager.js.html#line13">line 13</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="Manager.html">Manager</a></li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="cache">
+    <a href="#cache">#</a>
+    <span class="type-signature">(readonly) </span>cache<span class="type-signature"> :Map.&lt;String, <a href="Manager.html#cacheType">Manager#cacheType</a>></span>
+</h4>
+
+
+
+
+<div class="description">
+    <p>A map of the cached content</p>
+</div>
+
+
+
+    <div class="member-item-container flex">
+        <strong>Type: </strong>
+        <ul>
+            <li>
+                
+<span class="param-type">Map.&lt;String, <a href="Manager.html#cacheType">Manager#cacheType</a>></span>
+
+
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="inherited-from">Inherited From:</dt>
+            <dd class="inherited-from"><ul class="dummy"><li>
+                <a href="Manager.html#cache">Manager#cache</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="managers_Manager.js.html">managers/Manager.js</a>, <a href="managers_Manager.js.html#line33">line 33</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="cacheType">
+    <a href="#cacheType">#</a>
+    <span class="type-signature">(readonly) </span>cacheType<span class="type-signature"> :Constructor</span>
+</h4>
+
+
+
+
+<div class="description">
+    <p>The type of item this manager's cache holds.</p>
+</div>
+
+
+
+    <div class="member-item-container flex">
+        <strong>Type: </strong>
+        <ul>
+            <li>
+                
+<span class="param-type">Constructor</span>
+
+
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="inherited-from">Inherited From:</dt>
+            <dd class="inherited-from"><ul class="dummy"><li>
+                <a href="Manager.html#cacheType">Manager#cacheType</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="managers_Manager.js.html">managers/Manager.js</a>, <a href="managers_Manager.js.html#line24">line 24</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="client">
+    <a href="#client">#</a>
+    <span class="type-signature">(readonly) </span>client<span class="type-signature"> :<a href="Client.html">Client</a></span>
+</h4>
+
+
+
+
+<div class="description">
+    <p>The client that instantiated this manager</p>
+</div>
+
+
+
+    <div class="member-item-container flex">
+        <strong>Type: </strong>
+        <ul>
+            <li>
+                
+<span class="param-type"><a href="Client.html">Client</a></span>
+
+
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="inherited-from">Inherited From:</dt>
+            <dd class="inherited-from"><ul class="dummy"><li>
+                <a href="Manager.html#client">Manager#client</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="managers_Manager.js.html">managers/Manager.js</a>, <a href="managers_Manager.js.html#line14">line 14</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="fetch">
+        <a href="#fetch">#</a>
+        <span class="type-signature"></span>fetch<span class="signature">(identifiable, cache, forceApi)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="Channel.html">Channel</a>>}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Searches for a channel.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>identifiable</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Channel.html">Channel</a></span>
+|
+
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The name, id, or object of a channel.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cache</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>Whether or not to cache the object.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>forceApi</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Whether or not to skip checking the cache and immediately call the API.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="managers_ChannelManager.js.html">managers/ChannelManager.js</a>, <a href="managers_ChannelManager.js.html#line25">line 25</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="Channel.html">Channel</a>></span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="resolve">
+        <a href="#resolve">#</a>
+        <span class="type-signature"></span>resolve<span class="signature">(resolvable)</span><span class="type-signature"> &rarr; {<a href="Manager.html#cacheType">Manager#cacheType</a>}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Resolves for an object this cache could or does hold</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resolvable</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The id or value of the object to receive.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>...args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Additional options</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="inherited-from">Inherited From:</dt>
+            <dd class="inherited-from"><ul class="dummy"><li>
+                <a href="Manager.html#resolve">Manager#resolve</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="managers_Manager.js.html">managers/Manager.js</a>, <a href="managers_Manager.js.html#line75">line 75</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+<div class="param-desc">
+    <p>An instance of the managed data structure</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Manager.html#cacheType">Manager#cacheType</a></span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="updateCache">
+        <a href="#updateCache">#</a>
+        <span class="type-signature"></span>updateCache<span class="signature">(appending)</span><span class="type-signature"> &rarr; {<a href="Manager.html#cacheType">Manager#cacheType</a>}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Updates the cache with this object.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>appending</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">Array.&lt;Object></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The object to append</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>...args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Additional options</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="inherited-from">Inherited From:</dt>
+            <dd class="inherited-from"><ul class="dummy"><li>
+                <a href="Manager.html#updateCache">Manager#updateCache</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="managers_Manager.js.html">managers/Manager.js</a>, <a href="managers_Manager.js.html#line54">line 54</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+<div class="param-desc">
+    <p>An instance of the managed data structure</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Manager.html#cacheType">Manager#cacheType</a></span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    </div>
+
+    <footer class="footer" id="footer">
+      
+    </footer>
+
+    <script src="scripts/third-party/prettify.js"></script>
+    <script src="scripts/third-party/lang-css.js"></script>
+    <script type="text/javascript" src="scripts/misc.js"></script>
+
+    <script>prettyPrint();</script>
+    <script src="scripts/linenumber.js"></script>
+    <script src="scripts/fix-code-block.js"></script>
+    <script src="scripts/fix-navbar.js"></script>
+    
+      <script src="scripts/search.js"></script>
+      <script src="scripts/third-party/fuse.js"></script>
+      <script>
+        var list = [{"title":"Base","link":"<a href=\"Base.html\">Base</a>"},{"title":"Base.resolve","link":"<a href=\"Base.html#.resolve\">Base.resolve &rtrif; undefined</a>"},{"title":"BitField","link":"<a href=\"BitField.html\">BitField</a>"},{"title":"BitField.resolve","link":"<a href=\"BitField.html#.resolve\">BitField.resolve &rtrif; undefined</a>"},{"title":"BitField#add","link":"<a href=\"BitField.html#add\">BitField &rtrif; add</a>"},{"title":"BitField#any","link":"<a href=\"BitField.html#any\">BitField &rtrif; any</a>"},{"title":"BitField#equals","link":"<a href=\"BitField.html#equals\">BitField &rtrif; equals</a>"},{"title":"BitField#freeze","link":"<a href=\"BitField.html#freeze\">BitField &rtrif; freeze</a>"},{"title":"BitField#has","link":"<a href=\"BitField.html#has\">BitField &rtrif; has</a>"},{"title":"BitField#missing","link":"<a href=\"BitField.html#missing\">BitField &rtrif; missing</a>"},{"title":"BitField#remove","link":"<a href=\"BitField.html#remove\">BitField &rtrif; remove</a>"},{"title":"BitField#serialize","link":"<a href=\"BitField.html#serialize\">BitField &rtrif; serialize</a>"},{"title":"BitField#toArray","link":"<a href=\"BitField.html#toArray\">BitField &rtrif; toArray</a>"},{"title":"Channel","link":"<a href=\"Channel.html\">Channel</a>"},{"title":"Channel.compelete","link":"<a href=\"Channel.html#.compelete\">Channel.compelete &rtrif; undefined</a>"},{"title":"Channel#fetch","link":"<a href=\"Channel.html#fetch\">Channel &rtrif; fetch</a>"},{"title":"ChannelManager","link":"<a href=\"ChannelManager.html\">ChannelManager</a>"},{"title":"ChannelManager#fetch","link":"<a href=\"ChannelManager.html#fetch\">ChannelManager &rtrif; fetch</a>"},{"title":"ChannelManager#resolve","link":"<a href=\"ChannelManager.html#resolve\">ChannelManager &rtrif; resolve</a>"},{"title":"ChannelManager#updateCache","link":"<a href=\"ChannelManager.html#updateCache\">ChannelManager &rtrif; updateCache</a>"},{"title":"Client","link":"<a href=\"Client.html\">Client</a>"},{"title":"Client#login","link":"<a href=\"Client.html#login\">Client &rtrif; login</a>"},{"title":"GatewayManager","link":"<a href=\"GatewayManager.html\">GatewayManager</a>"},{"title":"GatewayManager#connect","link":"<a href=\"GatewayManager.html#connect\">GatewayManager &rtrif; connect</a>"},{"title":"Guild","link":"<a href=\"Guild.html\">Guild</a>"},{"title":"Guild#addFeatures","link":"<a href=\"Guild.html#addFeatures\">Guild &rtrif; addFeatures</a>"},{"title":"Guild#delete","link":"<a href=\"Guild.html#delete\">Guild &rtrif; delete</a>"},{"title":"Guild#fetch","link":"<a href=\"Guild.html#fetch\">Guild &rtrif; fetch</a>"},{"title":"Guild#setBanner","link":"<a href=\"Guild.html#setBanner\">Guild &rtrif; setBanner</a>"},{"title":"Guild#setDefaultNotifications","link":"<a href=\"Guild.html#setDefaultNotifications\">Guild &rtrif; setDefaultNotifications</a>"},{"title":"Guild#setDescription","link":"<a href=\"Guild.html#setDescription\">Guild &rtrif; setDescription</a>"},{"title":"Guild#setDiscoverySplash","link":"<a href=\"Guild.html#setDiscoverySplash\">Guild &rtrif; setDiscoverySplash</a>"},{"title":"Guild#setFeatures","link":"<a href=\"Guild.html#setFeatures\">Guild &rtrif; setFeatures</a>"},{"title":"Guild#setFilter","link":"<a href=\"Guild.html#setFilter\">Guild &rtrif; setFilter</a>"},{"title":"Guild#setIcon","link":"<a href=\"Guild.html#setIcon\">Guild &rtrif; setIcon</a>"},{"title":"Guild#setIdleChannel","link":"<a href=\"Guild.html#setIdleChannel\">Guild &rtrif; setIdleChannel</a>"},{"title":"Guild#setName","link":"<a href=\"Guild.html#setName\">Guild &rtrif; setName</a>"},{"title":"Guild#setOwner","link":"<a href=\"Guild.html#setOwner\">Guild &rtrif; setOwner</a>"},{"title":"Guild#setRulesChannel","link":"<a href=\"Guild.html#setRulesChannel\">Guild &rtrif; setRulesChannel</a>"},{"title":"Guild#setSplash","link":"<a href=\"Guild.html#setSplash\">Guild &rtrif; setSplash</a>"},{"title":"Guild#setSystemChannel","link":"<a href=\"Guild.html#setSystemChannel\">Guild &rtrif; setSystemChannel</a>"},{"title":"Guild#setSystemFlags","link":"<a href=\"Guild.html#setSystemFlags\">Guild &rtrif; setSystemFlags</a>"},{"title":"Guild#setTimeout","link":"<a href=\"Guild.html#setTimeout\">Guild &rtrif; setTimeout</a>"},{"title":"Guild#setUpdatesChannel","link":"<a href=\"Guild.html#setUpdatesChannel\">Guild &rtrif; setUpdatesChannel</a>"},{"title":"Guild#setVerification","link":"<a href=\"Guild.html#setVerification\">Guild &rtrif; setVerification</a>"},{"title":"GuildChannel","link":"<a href=\"GuildChannel.html\">GuildChannel</a>"},{"title":"GuildChannel#fetch","link":"<a href=\"GuildChannel.html#fetch\">GuildChannel &rtrif; fetch</a>"},{"title":"GuildChannel#setName","link":"<a href=\"GuildChannel.html#setName\">GuildChannel &rtrif; setName</a>"},{"title":"GuildChannel#setParent","link":"<a href=\"GuildChannel.html#setParent\">GuildChannel &rtrif; setParent</a>"},{"title":"GuildChannel#setPosition","link":"<a href=\"GuildChannel.html#setPosition\">GuildChannel &rtrif; setPosition</a>"},{"title":"GuildManager","link":"<a href=\"GuildManager.html\">GuildManager</a>"},{"title":"GuildManager#fetch","link":"<a href=\"GuildManager.html#fetch\">GuildManager &rtrif; fetch</a>"},{"title":"GuildManager#resolve","link":"<a href=\"GuildManager.html#resolve\">GuildManager &rtrif; resolve</a>"},{"title":"GuildManager#updateCache","link":"<a href=\"GuildManager.html#updateCache\">GuildManager &rtrif; updateCache</a>"},{"title":"GuildMember","link":"<a href=\"GuildMember.html\">GuildMember</a>"},{"title":"GuildMember#fetch","link":"<a href=\"GuildMember.html#fetch\">GuildMember &rtrif; fetch</a>"},{"title":"Manager","link":"<a href=\"Manager.html\">Manager</a>"},{"title":"Manager#resolve","link":"<a href=\"Manager.html#resolve\">Manager &rtrif; resolve</a>"},{"title":"Manager#updateCache","link":"<a href=\"Manager.html#updateCache\">Manager &rtrif; updateCache</a>"},{"title":"MemberManager","link":"<a href=\"MemberManager.html\">MemberManager</a>"},{"title":"MemberManager#fetch","link":"<a href=\"MemberManager.html#fetch\">MemberManager &rtrif; fetch</a>"},{"title":"MemberManager#listMembers","link":"<a href=\"MemberManager.html#listMembers\">MemberManager &rtrif; listMembers</a>"},{"title":"MemberManager#resolve","link":"<a href=\"MemberManager.html#resolve\">MemberManager &rtrif; resolve</a>"},{"title":"MemberManager#searchMembers","link":"<a href=\"MemberManager.html#searchMembers\">MemberManager &rtrif; searchMembers</a>"},{"title":"MemberManager#updateCache","link":"<a href=\"MemberManager.html#updateCache\">MemberManager &rtrif; updateCache</a>"},{"title":"Message","link":"<a href=\"Message.html\">Message</a>"},{"title":"TextChannel","link":"<a href=\"TextChannel.html\">TextChannel</a>"},{"title":"TextChannel#fetch","link":"<a href=\"TextChannel.html#fetch\">TextChannel &rtrif; fetch</a>"},{"title":"TextChannel#send","link":"<a href=\"TextChannel.html#send\">TextChannel &rtrif; send</a>"},{"title":"TextChannel#setName","link":"<a href=\"TextChannel.html#setName\">TextChannel &rtrif; setName</a>"},{"title":"TextChannel#setParent","link":"<a href=\"TextChannel.html#setParent\">TextChannel &rtrif; setParent</a>"},{"title":"TextChannel#setPosition","link":"<a href=\"TextChannel.html#setPosition\">TextChannel &rtrif; setPosition</a>"},{"title":"User","link":"<a href=\"User.html\">User</a>"},{"title":"User#fetch","link":"<a href=\"User.html#fetch\">User &rtrif; fetch</a>"},{"title":"UserManager","link":"<a href=\"UserManager.html\">UserManager</a>"},{"title":"UserManager#fetch","link":"<a href=\"UserManager.html#fetch\">UserManager &rtrif; fetch</a>"},{"title":"VoiceChannel","link":"<a href=\"VoiceChannel.html\">VoiceChannel</a>"},{"title":"VoiceChannel#fetch","link":"<a href=\"VoiceChannel.html#fetch\">VoiceChannel &rtrif; fetch</a>"},{"title":"VoiceChannel#setName","link":"<a href=\"VoiceChannel.html#setName\">VoiceChannel &rtrif; setName</a>"},{"title":"VoiceChannel#setParent","link":"<a href=\"VoiceChannel.html#setParent\">VoiceChannel &rtrif; setParent</a>"},{"title":"VoiceChannel#setPosition","link":"<a href=\"VoiceChannel.html#setPosition\">VoiceChannel &rtrif; setPosition</a>"},{"title":"event:debug","link":"<a href=\"Client.html#event:event:debug\">event:debug</a>"},{"title":"event:message","link":"<a href=\"Client.html#event:event:message\">event:message</a>"},{"title":"event:ready","link":"<a href=\"Client.html#event:event:ready\">event:ready</a>"},{"title":"BitFieldResolvable","link":"<a href=\"global.html#BitFieldResolvable\">BitFieldResolvable</a>"},{"title":"ChannelData","link":"<a href=\"global.html#ChannelData\">ChannelData</a>"},{"title":"ChannelResolvable","link":"<a href=\"global.html#ChannelResolvable\">ChannelResolvable</a>"},{"title":"ClientOptions","link":"<a href=\"global.html#ClientOptions\">ClientOptions</a>"},{"title":"DMChannelData","link":"<a href=\"global.html#DMChannelData\">DMChannelData</a>"},{"title":"GatewayOptions","link":"<a href=\"global.html#GatewayOptions\">GatewayOptions</a>"},{"title":"GroupChannelData","link":"<a href=\"global.html#GroupChannelData\">GroupChannelData</a>"},{"title":"GuildChannelData","link":"<a href=\"global.html#GuildChannelData\">GuildChannelData</a>"},{"title":"GuildResolvable","link":"<a href=\"global.html#GuildResolvable\">GuildResolvable</a>"},{"title":"MemberResolvable","link":"<a href=\"global.html#MemberResolvable\">MemberResolvable</a>"},{"title":"MessageData","link":"<a href=\"global.html#MessageData\">MessageData</a>"},{"title":"TextChannelData","link":"<a href=\"global.html#TextChannelData\">TextChannelData</a>"},{"title":"UserData","link":"<a href=\"global.html#UserData\">UserData</a>"},{"title":"UserResolvable","link":"<a href=\"global.html#UserResolvable\">UserResolvable</a>"},{"title":"VoiceChannelData","link":"<a href=\"global.html#VoiceChannelData\">VoiceChannelData</a>"}];
+        var options = 
+          setupSearch(list, options)
+      </script>
+    
+
+    
+
+    
+
+    
+
+    
+
+
+  </body>
+
+</html>
