@@ -13,7 +13,7 @@
     "eslint": "^7.25.0"
   },
   "scripts": {
-    "generate-docs": "node_modules/.bin/jsdoc -c .jsdoc.json --verbose ./src"
+    "generate-docs": "node_modules/.bin/jsdoc -c .jsdoc.json --verbose ./src && rm -rf ./docs && mv ./github_pages/discord-api-raw/**/ ./docs/ && rm -rf github_pages"
   },
   "author": "",
   "license": "ISC"
