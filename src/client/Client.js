@@ -11,9 +11,6 @@ class Client extends EventEmitter {
      * Create a new Discord client.
      * @param {ClientOptions} ClientOptions The options for the client. 
      * @extends EventEmitter 
-     * @emits ready Emitted when the client is logged in
-     * @emits message Emitted when a message is received
-     * @emits debug Emitted for general debug messages. Heavily cluttered.
      */
     constructor(ClientOptions = defaultClientOptions) {
         super()
@@ -59,6 +56,17 @@ class Client extends EventEmitter {
             setTimeout(() => this.emit("message", message), 1)
             // Wait to allow for setting of guild and channel.
         })
+        /**
+         *@event ready Emitted when the client is logged in
+         */
+        /**
+         * @event message Emitted when a message is received
+         * @type {Message}
+         */
+        /**
+         * @event debug Emitted for general debug messages. Heavily cluttered.
+         * @type {any}
+         */
     }
 }
 
