@@ -45,11 +45,6 @@ class Client extends EventEmitter {
             this.users = new UserManager(this)
             this.channels = new ChannelManager(this)
             this.users.updateCache(readyData.d.user)
-
-            /**
-             * Emitted whenever the client is connected to Discord
-             * @event Client#event:ready
-             */
             this.emit("ready")
         })
 
@@ -61,21 +56,9 @@ class Client extends EventEmitter {
         this.gateway.on("MESSAGE_CREATE", (data) => {
             let messageData = data.d
             let message = new Message(this, messageData)
-            /**
-             * Emitted whenever the client receives a message
-             * @event Client#event:message
-             * @type {Message}
-             */
             setTimeout(() => this.emit("message", message), 1)
             // Wait to allow for setting of guild and channel.
         })
-
-        /**
-         * Emitted constantly for nearly any reason.<br>
-         * Used for testing purposes.
-         * @event Client#event:debug
-         * @type {any}
-         */
     }
 }
 
