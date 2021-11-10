@@ -1,5 +1,5 @@
 const GuildChannel = require("./GuildChannel")
-
+const fetch = require('node-fetch')
 class TextChannel extends GuildChannel {
 
     /**
@@ -42,6 +42,17 @@ class TextChannel extends GuildChannel {
      */
     send(content) {
         this.client.emit("debug", `Sending to ${this.id} with ${content}`)
+        let toSend
+        if (typeof content === "string") toSend = {
+            content: content
+        }
+        return new Promise((resolve, reject) => {
+            fetch('https://discord.com/api/channels/' + this.id + '/messages', { method: 'POST', body: JSON.stringify(toSend), 'headers': { 'Authorization': 'Bot ' + this.client.token, 'Content-Type': 'application/json' } })
+                .then(res => res.json())
+                .then(body => {
+                    resolve(this.client.channels.cache.get(body.id))
+                }).catch(reject)
+        })
     }
 }
 

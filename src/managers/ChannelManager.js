@@ -12,12 +12,6 @@ class ChannelManager extends Manager {
      */
     constructor(client, channels = []) {
         super(client, Channel, channels)
-
-        /**
-         * The cached channels.
-         * @type {Map<Channel>}
-         */
-        this.cache = new Map()
         if (channels) for (const o of channels) this.updateCache(Channel.compelete(o, this.client))
     }
 
