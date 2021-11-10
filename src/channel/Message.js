@@ -1,35 +1,38 @@
 const GuildMember = require('../user/GuildMember.js')
-class Message {
+const Base = require('../Base')
+class Message extends Base {
     /**
-     * 
+     * A message found within a {@link TextChannel} or {@link DMChannel}
      * @param {Client} client The Client this message was instantiated from
-     * @param {Object} data The data for the message
+     * @param {MessageData} data The data for the message
+     * @extends Base
      */
     constructor(client, data) {
-        /**
-         * The client this message was instantiated from
-         * @type {Client}
-         * @readonly
-         */
-        Object.defineProperty(this, 'client', {value: client, enumerable: false})
+        super(client)
 
         /**
          * The content of the message.
-         * @type {String}
+         * @member {String} content
+         * @memberof Message
+         * @instance
          * @readonly
          */
         Object.defineProperty(this, 'content', {value: data.content, enumerable: true})
 
         /**
          * The message's ID
-         * @type {String}
+         * @member {String} id
          * @readonly
+         * @memberof Message
+         * @instance
          */
         Object.defineProperty(this, 'id', {value: data.id, enumerable: true})
 
         /**
          * The guild this message originates from.
-         * @type {Guild}
+         * @member {Guild} guild
+         * @memberof Message
+         * @instance
          * @readonly
          */
         this.client.guilds.fetch(data.guild_id).then(g => {
@@ -37,43 +40,47 @@ class Message {
             g.channels.fetch(data.channel_id).then(cha => Object.defineProperty(this, 'channel', { value: cha, enumerable: true}))
         })
 
+        
         /**
          * The channel this message originates from.
-         * @name channel
-         * @type {Channel}
+         * @member {Channel} channel
+         * @memberof Message
+         * @instance
          * @readonly
          */
 
         /**
          * Whether or not the message is a TTS message
-         * @type {Boolean}
+         * @member {Boolean} tts
+         * @memberof Message
+         * @instance
          * @readonly
          */
         Object.defineProperty(this, 'tts', {value: data.tts, enumerable: true})
 
         /**
          * The date the message was created
-         * @type {String}
+         * @member {String} createdTimestamp
+         * @memberof Message
+         * @instance
          * @readonly
          */
         Object.defineProperty(this, 'createdTimestamp', { value: data.timestamp, enumerable: true})
 
         /**
          * The raw data of the message replied to
+         * @member {Message} repliedMessage
+         * @memberof Message
+         * @instance
          * @readonly
          */
         Object.defineProperty(this, 'repliedMessage', { value: data.referenced_message ? Object.freeze(new Message(this.client, data.referenced_message)) : null, enumerable: true })
 
-        /**
-         * The author of the message
-         * @readonly
-         * @type {User}
-         */
         Object.defineProperty(this, '_author', { value: this.client.users.fetch(data.author.id)})
 
         /**
          * An array of raw mention data
-         * @property _mentions
+         * @member {Array<Number>} _mentions
          * @type {Array<GuildMember>}
          * @private
          * @readonly
@@ -104,3 +111,17 @@ class Message {
 }
 
 module.exports = Message
+
+/**
+ * An object which encompasses the data which describes a message
+ * @typedef {Object} MessageData
+ * @property {String} content The raw content of the message
+ * @property {String} id The ID of the message
+ * @property {String} guild_id The ID of the guild this message is from
+ * @property {Boolean} tts Whether or not this message has text-to-speech enabled
+ * @property {Number} timestamp The unix timestamp of when this message was created
+ * @property {MessageData?} referenced_message The message data of the message this message is in response to
+ * @property {Object} author Basic data about the user who created this message
+ * @property {String} author.id The ID of the user who created this message
+ * @property {Array<String>} mentions An array of IDs of users this message mentions
+ */

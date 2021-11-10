@@ -36,3 +36,12 @@ class DMChannel extends Channel {
 }
 
 module.exports = DMChannel
+
+
+
+/**
+ * Data that describes a DM channel.
+ * @typedef {ChannelData} DMChannelData
+ * @extends ChannelData
+ * @property {Array<UserData>} recipients The data for all users in this channel.
+ */

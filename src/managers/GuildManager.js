@@ -4,9 +4,10 @@ const fetch = require('node-fetch')
 
 class GuildManager extends Manager {
     /**
-     * A Manager for managing guilds cached in the client.
-     * @param {Client} client 
-     * @param {Array<GuildResolvable>} guilds 
+     * A {@link Manager} for managing guilds cached in the client.
+     * @param {Client} client The client this manager is attached to
+     * @param {Array<GuildResolvable>} guilds An array of guild resolvables
+     * @extends Manager
      */
     constructor(client, guilds = []) {
         super(client, Guild, guilds)
@@ -16,9 +17,9 @@ class GuildManager extends Manager {
 
     /**
      * Searches for a guild.
-     * @param {any} guildIdentifiable "The ID or name of a guild."
-     * @param {Boolean} forceApi "Whether or not to skip the cache
-     * @returns {Promise<Guild>} "The Guild instance."
+     * @param {any} guildIdentifiable The ID or name of a guild.
+     * @param {Boolean} forceApi Whether or not to skip the cache
+     * @returns {Promise<Guild>} The guild instance.
      */
     fetch(guildIdentifiable, forceApi = false) {
         return new Promise((resolve, reject) => {
@@ -40,3 +41,8 @@ class GuildManager extends Manager {
 }
 
 module.exports = GuildManager
+
+/**
+ * An object which can be resolved to a guild
+ * @typedef {Object} GuildResolvable
+ */

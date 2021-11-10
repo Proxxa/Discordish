@@ -133,11 +133,11 @@ class BitField {
     }
 
     /**
-     * Data that can be resolved to give a bitfield. This can be:
-     * * A string (see {@link BitField.FLAGS})
-     * * A bit number
-     * * An instance of BitField
-     * * An Array of BitFieldResolvable
+     * Data that can be resolved to give a bitfield. This can be:<ul>
+     * <li>A string (see {@link BitField.FLAGS})</li>
+     * <li>A bit number</li>
+     * <li>An instance of BitField</li>
+     * <li>An Array of BitFieldResolvable</li><ul>
      * @typedef {string|number|BitField|BitFieldResolvable[]} BitFieldResolvable
      */
 

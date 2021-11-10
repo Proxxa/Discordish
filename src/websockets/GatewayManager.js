@@ -5,17 +5,45 @@ const EventEmitter = require('events')
 class GatewayManager extends EventEmitter {
     /**
      * Manages the Discord API WebSocket Gateway
-     * @param {Client} client 
+     * @param {Client} client The client this gateway manager is bound to
+     * @extends EventEmitter
      */
     constructor(client) {
         super()
+
+        /**
+         * The client this gateway manager is bound to
+         * @member {Client} client
+         * @memberof GatewayManager
+         * @readonly
+         * @instance
+         */
         Object.defineProperty(this, 'client', { value: client })
         Object.defineProperty(this, '_gateway', { value: null, writable: true })
+
+        /**
+         * Whether or not the websocket has connected to Discord
+         * @type {Boolean}
+         */
         this.connected = false
+
+        /**
+         * How many heartbeat pulses have been sent to Discord without acknowledgement
+         * @type {Number}
+         */
         this.lonelyHeartbeats = 0
+
+        /**
+         * The last sequence number that has been received from Discord
+         * @type {Number?}
+         */
         this.lastSeq = null
     }
 
+    /**
+     * The link for the websocket to connect to
+     * @type {String}
+     */
     get gateway() {
         this.client.emit("debug", `[GW] Gateway requested.`)
         return new Promise((res, rej) => { 

@@ -2,9 +2,10 @@ const Base = require('../Base')
 const fetch = require('node-fetch')
 class Channel extends Base {
     /**
-     * 
+     * The base form of a Discord channel. All channel types extend from this.
      * @param {Client} client The client that instantiated this channel
      * @param {ChannelData} data The data for this channel
+     * @extends Base
      */
     constructor(client, data) {
         super(client)
@@ -12,32 +13,27 @@ class Channel extends Base {
         /**
          * The channel type.
          * @readonly
+         * @member {String} Type
+         * @memberof Channel
+         * @instance
          */
         Object.defineProperty(this, 'type', {value: ChannelTypes[data.type]})
 
         /**
          * The channel id.
          * @readonly
+         * @member {String} id
+         * @memberof channel
+         * @instance
          */
         Object.defineProperty(this, 'id', {value: data.id, enumerable: true})
     }
-
-    /**
-     * Any object that may be resolved into a channel.
-     * @typedef {Object|Channel|Promise<Channel>|ChannelResolvable} ChannelResolvable
-     */
-
-    /**
-     * Turns a ChannelResolvable object into a guild.
-     * @method resolve
-     * @returns {Channel}
-     * @param {ChannelResolvable} resolvable The ChannelResolvable object to resolve
-     */
-    
     /**
      * Takes a Channel or ChannelResolvable object and uses it to return a Channel filled
      * to the highest possible extension.
      * @param {ChannelResolvable} completable Some object to fill out into a full channel
+     * @param {Client} client The client to attach to this channel
+     * @returns {Channel}
      */
     static compelete(completable, client) {
         if (!client) throw new RangeError("Attached client required.")
@@ -58,7 +54,6 @@ class Channel extends Base {
     }
 
     /**
-     * 
      * @param {Channel|string|number} identifiable The name, id, or object of a channel.
      * @param {Boolean} cache Whether or not to cache the object.
      * @param {Boolean} forceApi Whether or not to skip checking the cache and immediately call the API.
@@ -87,8 +82,8 @@ class Channel extends Base {
     /**
      * Edits the guild using the api.
      * @param {Object} content The parts to update
-     * @private
      * @returns {Promise<Channel>} The new guild
+     * @private
      */
     edit(content = {}) {
         console.log("EDITING CHANNEL %a, %b", this.id, JSON.stringify(content))
@@ -112,3 +107,15 @@ const GroupChannel = require('./GroupChannel.js')
 const NewsChannel = require('./NewsChannel.js')
 const TextChannel = require('./TextChannel.js')
 const VoiceChannel = require('./VoiceChannel.js')
+
+/**
+ * An object which encompasses the data which describes a channel
+ * @typedef {Object} ChannelData
+ * @property {Number} type An integer which describes the type of the channel.
+ * @property {String} id The ID of the channel
+ */
+
+/**
+ * Any object that may be resolved into a channel.
+ * @typedef {Object|Channel|Promise<Channel>|ChannelResolvable} ChannelResolvable
+ */

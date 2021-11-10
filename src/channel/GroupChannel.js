@@ -26,3 +26,11 @@ class GroupChannel extends DMChannel {
 }
 
 module.exports = GroupChannel
+
+
+/**
+ * Data that describes a Group DM channel.
+ * @typedef {DMChannelData} GroupChannelData
+ * @property {String} icon The hash of the Group DM's icon
+ * @property {String} owner_id The ID of the owner of this channel.
+ */

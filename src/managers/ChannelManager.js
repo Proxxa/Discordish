@@ -6,8 +6,9 @@ class ChannelManager extends Manager {
 
     /**
      * A Manager for managing channels cached in the client
-     * @param {Client} client
-     * @param {Array<Object>} channels 
+     * @param {Client} client The client this manager is attached to
+     * @param {Array<ChannelResolvable>} channels An array of channel resolvables
+     * @extends Manager
      */
     constructor(client, channels = []) {
         super(client, Channel, channels)
@@ -51,3 +52,8 @@ class ChannelManager extends Manager {
 }
 
 module.exports = ChannelManager
+
+/**
+ * An object which can be resolved to a channel
+ * @typedef {Object} ChannelResolvable
+ */

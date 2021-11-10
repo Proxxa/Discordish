@@ -9,16 +9,32 @@ const Guild = require('../guild/Guild')
 class Client extends EventEmitter {
     /**
      * Create a new Discord client.
-     * @param {ClientOptions} ClientOptions "The options for the client." 
+     * @param {ClientOptions} ClientOptions The options for the client. 
+     * @extends EventEmitter 
+     * @emits ready Emitted when the client is logged in
+     * @emits message Emitted when a message is received
+     * @emits debug Emitted for general debug messages. Heavily cluttered.
      */
     constructor(ClientOptions = defaultClientOptions) {
         super()
+
+        /**
+         * @member {ClientOptions} clientOptions The options the client was instantiated with
+         * @memberof Client
+         * @instance
+         */
         this.clientOptions = ClientOptions
+
+        /**
+         * @member {GatewayManager} gateway The inner gateway manager of the client
+         * @memberof Client
+         * @instance
+         */
         this.gateway = new GatewayManager(this)
     }
     /**
      * Logs in to Discord
-     * @param {String} token "The Bot Token"
+     * @param {String} token The bot token
      */
     async login(token = this.token) {
         this.token = token
@@ -46,6 +62,21 @@ class Client extends EventEmitter {
     }
 }
 
+
+/**
+ * The options to use when instantiating an object
+ * @typedef {Object} ClientOptions
+ * @property {GatewayOptions} gateway The options for a gateway
+ * @property {Number} intents An integer representing the bitfield for gateway intents
+ * @property {Number|Boolean} cacheLifetime The number of milliseconds to cache an object for in a manager. "False" if forever.
+ * */
+
+/**
+ * The options for the gateway between the client and Discord
+ * @typedef {Object} GatewayOptions
+ * @property {Number} version The version number of the gateway to use
+ * @property {String} encoding The encoding type to use with discord
+ */
 
 
 const defaultClientOptions = {

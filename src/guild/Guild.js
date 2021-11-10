@@ -7,8 +7,9 @@ const TextChannel = require('../channel/TextChannel')
 const BitField = require('../client/BitField')
 class Guild extends Base {
     /**
-     * 
-     * @param {Object} guild "The data for the guild." 
+     * A guild within discord
+     * @param {Object} guild The data for the guild. 
+     * @extends Base
      */
     constructor(client, guild) {
         super(client)
@@ -17,62 +18,72 @@ class Guild extends Base {
 
         /**
          * The availability of the guild.
+         * @type {Boolean}
          * @readonly
          */
         this.available = !guild.unavailable
         if (this.available) {
+
             this.some = "AAAAAAAAAAA"
+
+
             /**
              * The guild's system channel. Used for built-in join
-             * and boost messages.
+             * and boost messages. Currently only set to the channel ID
+             * @type {String}
              */
             this.systemChannel = guild.system_channel_id
 
             /**
-             * If the guild is marked as NSFW
+             * If the guild is NSFW
+             * @type {Boolean}
              */
             this.nsfw = guild.nsfw
 
             /**
-             * Lazy guilds have this set to true
+             * "Lazy" guilds have this set to true
+             * @type {Boolean}
              */
             this.lazy = guild.lazy
 
             /**
              * If the guild is identified as "large"
+             * @type {Boolean}
              */
             this.large = guild.large
 
             /**
-             * A set of cached channels.
-             */
-            this.channels = new ChannelManager(this.client, guild.channels)
-
-            /**
-             * A set of cached guild members
+             * A {@link Manager} containing this guild's cached members.
+             * @type {MemberManager}
              */
             this.members = new MemberManager(this.client, this)
 
             /**
-             * The preferred voice channel location of this guild
+             * The region in which voice channel servers are preferred to be in.
+             * @type {String}
              */
             this.locale = guild.preferred_locale
 
             /**
-             * This guild's splash image
+             * This hash of this guild's splash image
+             * @type {String}
              */
             this.splash = guild.splash
 
             /**
              * The name of the guild
+             * @type {String}
              */
             this.name = guild.name
+            
             /**
-             * The owner's id.
+             * The owner of the guild.
+             * @member {Member} owner
+             * @memberof Guild 
              * @readonly
-             * @private
+             * @instance
              */
-            Object.defineProperty(this, '_owner', {value: guild.owner_id})
+            this.members.fetch(guild.owner_id).then(u => Object.defineProperty(this, 'owner', {value:u}))
             
             /**
              * The timestamp at which the user joined the guild.
@@ -81,7 +92,7 @@ class Guild extends Base {
             this.joinedTimestamp = guild.joined_at
             
             /**
-             * The guild's channels.
+             * A {@link Manager} containing this guild's cached channels.
              * @readonly
              */
             Object.defineProperty(this, 'channels', { value: new ChannelManager(this.client, guild.channels) })
@@ -94,21 +105,18 @@ class Guild extends Base {
 
         }
         /**
-         * The guild id.
+         * The guild's id.
          * @readonly
          */
         Object.defineProperty(this, 'id', {value: guild.id, enumerable:true})
     }
 
     /**
-     * The guild's owner.
-     * @returns {Promise<GuildMember>} Promises the GuildMember object of the guild owner.
-     * @readonly
+     * Fetch this guild from Discord's API
+     * @param {Boolean} cache Whether or not to cache the result
+     * @param {Boolean} forceApi Whether or not to go directly to the API before checking the cache
+     * @returns {Promise<Guild>}
      */
-    get owner() {
-        return this.client.users.fetch(this._owner)
-    }
-
     fetch(cache = true, forceApi = false) {
         return new Promise((resolve, reject) => {
             if (this.client.guilds.has(this.id) && !forceApi)
@@ -154,13 +162,13 @@ class Guild extends Base {
     }
 
     /**
-     * Sets the verification level of the guild.
-     * * 0: Unrestricted
-     * * 1: Verified Email
-     * * 2: Registered Discord user for 5+ minutes
-     * * 3: Server member for 10+ minutes
-     * * 4: Verified phone number
-     * @param {string|number} level The level of verification.
+     * Sets the verification level of the guild.<br><ol>
+     * <li>Unrestricted</li>
+     * <li>Verified Email</li>
+     * <li>Registered Discord user for 5+ minutes</li>
+     * <li>Server member for 10+ minutes</li>
+     * <li>Verified phone number</li><ol>
+     * @param {String|Number} level The level of verification.
      * @returns {Promise<Guild>} The updated guild.
      */
     setVerification(level) {
@@ -177,11 +185,11 @@ class Guild extends Base {
     }
 
     /**
-     * Sets the explicit content filter level of the guild.
-     * * 0: Unfiltered
-     * * 1: Filter content from role-less members
-     * * 2: Filter content from anyone
-     * @param {string|number} level The level of the filter.
+     * Sets the explicit content filter level of the guild.<ol>
+     * <li>Unfiltered</li>
+     * <li>Filter content from role-less members</li>
+     * <li>Filter content from anyone</li></ol>
+     * @param {String|Number} level The level of the filter.
      * @returns {Promise<Guild>} The updated guild.
      */
     setFilter(level) {
@@ -199,7 +207,7 @@ class Guild extends Base {
 
     /**
      * Sets the afk timeout of this guild's voice channels.
-     * @param {string|number} timeout The new timeout.
+     * @param {String|Number} timeout The new timeout.
      * @returns {Promise<Guild>} The updated guild.
      */
     setTimeout(timeout) {
@@ -217,7 +225,7 @@ class Guild extends Base {
 
     /**
      * Sets the guild's afk channel.
-     * @param {string|number} channel The id of the new channel.
+     * @param {String|Number} channel The id of the new channel.
      * @returns {Promise<Guild>} The updated guild.
      */
     setIdleChannel(channel) {
@@ -236,7 +244,7 @@ class Guild extends Base {
 
     /**
      * Sets the default notification level of the guild.
-     * @param {string|number} level The default notification level.
+     * @param {String|Number} level The default notification level.
      * @returns {Promise<Guild>} The updated guild.
      */
     setDefaultNotifications(level) {
@@ -301,7 +309,7 @@ class Guild extends Base {
 
     /**
      * Sets the guild's "system channel."
-     * @param {string|number} channel The id of the new channel.
+     * @param {String|Number} channel The id of the new channel.
      * @returns {Promise<Guild>} The updated guild.
      */
     setSystemChannel(channel) {
@@ -332,7 +340,7 @@ class Guild extends Base {
 
     /**
      * Sets the guild's "rules channel."
-     * @param {string|number} channel The id of the new channel.
+     * @param {String|Number} channel The id of the new channel.
      * @returns {Promise<Guild>} The updated guild.
      */
     setRulesChannel(channel) {
@@ -351,7 +359,7 @@ class Guild extends Base {
 
     /**
      * Sets the guild's "updates channel."
-     * @param {string|number} channel The id of the new channel.
+     * @param {String|Number} channel The id of the new channel.
      * @returns {Promise<Guild>} The updated guild.
      */
     setUpdatesChannel(channel) {
@@ -380,11 +388,11 @@ class Guild extends Base {
 
     /**
      * Sets the guild's features
-     * Valid options are ANIMATED_ICON, BANNER, COMMERCE,
+     * Valid options are <code>ANIMATED_ICON, BANNER, COMMERCE,
      * COMMUNITY, DISCOVERABLE, FEATURABLE, INVITE_SPLASH,
      * MEMBER_VERIFICATION_GATE_ENABLED, NEWS, PARTNERED,
      * PREVIEW_ENABLED, VANITY_URL, VERIFIED, VIP_REGIONS,
-     * WELCOME_SCREEN_ENABLED
+     * WELCOME_SCREEN_ENABLED</code><br>
      * Note that not all of these may be usable in all guilds.
      * @param {String|String[]} features The new list of features.
      * @returns {Promise<Guild>} The updated guild.
@@ -396,11 +404,11 @@ class Guild extends Base {
 
     /**
      * Add to the guild's features
-     * Valid options are ANIMATED_ICON, BANNER, COMMERCE,
+     * Valid options are <code>ANIMATED_ICON, BANNER, COMMERCE,
      * COMMUNITY, DISCOVERABLE, FEATURABLE, INVITE_SPLASH,
      * MEMBER_VERIFICATION_GATE_ENABLED, NEWS, PARTNERED,
      * PREVIEW_ENABLED, VANITY_URL, VERIFIED, VIP_REGIONS,
-     * WELCOME_SCREEN_ENABLED
+     * WELCOME_SCREEN_ENABLED</code><br>
      * Note that not all of these may be usable in all guilds or
      * settable through the API.
      * @param {String|String[]} features The new list of features.

@@ -5,20 +5,18 @@ const Manager = require('./Manager')
 class UserManager extends Manager {
     /**
      * A Manager for managing users cached in the client
-     * @param {Client} client
-     * @param {Array<Object>} users 
+     * @param {Client} client The client this manager is attached to
+     * @param {Array<UserResolvable>} [users=[]] An array of user resolvables
      */
     constructor(client, users = []) {
         super(client, User, users)
-
-        
     }
 
     /**
      * Searches for a user.
-     * @param {any} userIdentifiable "The ID of a user, or tag of a cached user."
-     * @param {Boolean} forceApi "Whether or not to skip the cache"
-     * @returns {Promise<User>} "The User instance."
+     * @param {any} userIdentifiable The ID of a user, or tag of a cached user.
+     * @param {Boolean} forceApi Whether or not to skip the cache
+     * @returns {Promise<User>} The User instance.
      */
     fetch(userIdentifiable, forceApi = false) {
         return new Promise((resolve, reject) => {
@@ -38,3 +36,8 @@ class UserManager extends Manager {
 }
 
 module.exports = UserManager
+
+/**
+ * An object which can be resolved to a user
+ * @typedef {Object} UserResolvable
+ */

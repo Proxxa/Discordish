@@ -5,21 +5,29 @@ const Manager = require('./Manager')
 class MemberManager extends Manager {
     /**
      * A Manager for managing the members of a guild
-     * @param {Client} client
-     * @param {Guild} guild
-     * @param {Array<Object>} members 
+     * @param {Client} client The client this manager is attached to
+     * @param {Guild} guild The guild this manager is attached to
+     * @param {Array<MemberResolvable>} members An array of member resolvables
+     * @extends Manager
      */
     constructor(client, guild, members = []) {
         super(client, GuildMember, members)
 
-        this.guild = guild
+        /**
+         * The guild whose members this manager manages
+         * @member {Guild} guild
+         * @memberof MemberManager
+         * @instance
+         * @readonly
+         */
+        Object.defineProperty(this, 'guild', {value:guild})
     }
 
     /**
-     * Searches for a guild member.
+     * Searches for a guild member or fetches it from the API.
      * @param {any} memberIdentifiable "The ID of a user, or tag of a guild member."
      * @param {Boolean} forceApi "Whether or not to skip the cache"
-     * @returns {Promise<User>} "The User instance."
+     * @returns {Promise<GuildMember>} "The User instance."
      */
     fetch(memberIdentifiable, forceApi = false) {
         return new Promise((resolve, reject) => {
@@ -77,3 +85,8 @@ class MemberManager extends Manager {
 }
 
 module.exports = MemberManager
+
+/**
+ * An object which can be resolved to a guild member
+ * @typedef {Object} MemberResolvable
+ */

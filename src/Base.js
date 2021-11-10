@@ -13,14 +13,19 @@ class Base {
     constructor(client) {
         /**
          * The client that instantiated this object.
-         * @type {Client}
+         * @member {Client} client
+         * @memberof Base
+         * @instance
+         * @readonly
          */
         Object.defineProperty(this, 'client', { value: client, enumerable: true })
 
         /**
          * The time at which this object was instantiated.
-         * @type {Number}
-         * @private
+         * @member {Number} instantiated
+         * @memberof Base
+         * @instance
+         * @readonly
          */
         Object.defineProperty(this, 'instantiated', { value: Date.now() })
     }
@@ -28,6 +33,8 @@ class Base {
     /**
      * Resolves an object, promise, or array of "Resolvables" into an instance of this class.
      * @param {any} resolvable The object to resolve
+     * @param {Client} client The client that instantiates this instance
+     * @param {...any} ...args Additional options 
      */
     static resolve(resolvable, client = null, ...args) {
         if (Array.isArray(resolvable)) return resolvable.map(r => this.resolve(r, ...args))

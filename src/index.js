@@ -4,3 +4,4 @@ module.exports = {
     "User": require('./user/User'),
     "GuildMember": require('./user/GuildMember')
 }
+

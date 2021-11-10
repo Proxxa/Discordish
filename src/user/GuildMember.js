@@ -2,28 +2,39 @@ const User = require("./User")
 
 class GuildMember extends User {
     /**
-     * A user with extra methods for guilds
+     * A {@link User} under the context of a guild
      * @extends User
-     * @param {User} user "The user object of this member." 
-     * @param {Guild} guild "The guild this user is a member of."
+     * @param {UserData} user The user object of this member. 
+     * @param {Guild} guild The guild this user is a member of.
      */
     constructor(client, user, guild) {
         super(client, user)
 
         /**
-         * The underlying user object.
-         * @private
+         * The underlying user object of this guild member.
+         * @member {User} user
+         * @memberof GuildMember
+         * @instance
          * @readonly
          */
-        Object.defineProperty(this, '_user', { value: User.resolve(this.client, user), enumerable: true })
+        Object.defineProperty(this, 'user', { value: User.resolve(this.client, user), enumerable: true })
 
         /**
          * The guild this GuildMember is from.
+         * @member {Guild} guild
+         * @memberof GuildMember
+         * @instance
          * @readonly
          */
         Object.defineProperty(this, 'guild', { value: guild, enumerable: true })
     }
 
+    /**
+     * Fetch this guild member from the Discord API
+     * @param {Boolean} cache Whether or not to cache the resulting user
+     * @param {Boolean} forceApi Whether or not to skip checking the cache and call the Discord API immediately.
+     * @returns {Promise<GuildMember>}
+     */
     fetch(cache = true, forceApi = false) {
         return new Promise((resolve, reject) => {
             if (this.client.users.has(this.id) && !forceApi)
@@ -41,21 +52,6 @@ class GuildMember extends User {
                     }).catch(reject)
             reject(new Error("Could not fetch?"))
         })
-    }
-
-
-    /**
-     * Resolves an object, promise, or array of "Resolvables" into an instance of this class.
-     * @param {GuildMemberResolvable} resolvable The object to resolve
-     */
-    static resolve(resolvable) {
-        if (Array.isArray(resolvable)) return resolvable.map(r => this.resolve(r))
-        if (resolvable instanceof this) return resolvable
-        if (resolvable instanceof Promise) resolvable.then(body => {
-            return this.resolve(body)
-        })
-        return new this(this.client, resolvable, this.guild)
-        // Does not error. Must attempt to create an instance.
     }
 }
 
