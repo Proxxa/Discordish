@@ -1,5 +1,5 @@
 {
-  "name": "discord-api-raw",
+  "name": "discordish",
   "version": "0.0.0",
   "description": "",
   "main": "src/index.js",
