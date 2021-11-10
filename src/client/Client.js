@@ -11,6 +11,7 @@ class Client extends EventEmitter {
      * Create a new Discord client.
      * @param {ClientOptions} ClientOptions The options for the client. 
      * @extends EventEmitter 
+     * @emits Client#ready OKAY
      */
     constructor(ClientOptions = defaultClientOptions) {
         super()
@@ -42,6 +43,12 @@ class Client extends EventEmitter {
             this.users = new UserManager(this)
             this.channels = new ChannelManager(this)
             this.users.updateCache(readyData.d.user)
+
+            
+            /**
+             * Emitted when the client is logged in
+             * @event Client#event:ready
+             */
             this.emit("ready")
         })
 
@@ -53,20 +60,14 @@ class Client extends EventEmitter {
         this.gateway.on("MESSAGE_CREATE", (data) => {
             let messageData = data.d
             let message = new Message(this, messageData)
+            /**
+             * Emitted when a message is received
+             * @event Client#event:message
+             * @type {Message}
+             */
             setTimeout(() => this.emit("message", message), 1)
             // Wait to allow for setting of guild and channel.
         })
-        /**
-         *@event ready Emitted when the client is logged in
-         */
-        /**
-         * @event message Emitted when a message is received
-         * @type {Message}
-         */
-        /**
-         * @event debug Emitted for general debug messages. Heavily cluttered.
-         * @type {any}
-         */
     }
 }
 
