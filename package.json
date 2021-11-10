@@ -13,7 +13,8 @@
     "eslint": "^7.25.0"
   },
   "scripts": {
-    "generate-docs": "git checkout github-pages && git merge master && node_modules/.bin/jsdoc -c .jsdoc.json --verbose ./src && rm -rf ./docs && mv ./github_pages/discordish/**/ ./docs/ && rm -rf github_pages"
+    "generate-docs": "git checkout github-pages && git merge master && jsdoc -c .jsdoc.json --verbose ./src && rm -rf ./docs && mv ./github_pages/discordish/**/ ./docs/ && rm -rf github_pages",
+    "publish-docs": "npm run generate-docs && git commit . && git push"
   },
   "author": "",
   "license": "ISC"
