@@ -4,7 +4,6 @@ node_modules/*
 *test.js
 out/*
 .jsdoc.json
-docs/*
 .github/*
 .elsintrc.json
 test/*
