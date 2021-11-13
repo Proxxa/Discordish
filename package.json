@@ -14,7 +14,7 @@
   },
   "scripts": {
     "generate-docs": "git checkout github-pages && git merge master && jsdoc -c .jsdoc.json --verbose ./src && rm -rf ./docs && mv ./github_pages/discordish/**/ ./docs/ && rm -rf github_pages",
-    "publish-docs": "npm run generate-docs && git commit . -m \"JSDOC Updates\" && git push && git checkout master"
+    "publish-docs": "npm run generate-docs && git add ./docs/** && git commit . -m \"JSDOC Updates\" && git push && git checkout master"
   },
   "author": "Proxxa",
   "license": "ISC"
