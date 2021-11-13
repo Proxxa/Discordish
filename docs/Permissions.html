@@ -31,7 +31,7 @@
 
 
     <title>
-      GuildChannel
+      Permissions
     </title>
 
     <!--[if lt IE 9]>
@@ -98,7 +98,7 @@
     <div id="main" class="main-content">
       
       <h1 id='page-title' class="page-title">
-        GuildChannel
+        Permissions
       </h1>
       
 
@@ -115,7 +115,7 @@
         
         <h2>
         
-        GuildChannel
+        Permissions
         
         </h2>
         
@@ -131,9 +131,9 @@
 
     
 
-    <h4 class="name" id="GuildChannel">
-        <a href="#GuildChannel">#</a>
-        <span class="type-signature"></span>new GuildChannel<span class="signature">(client, data)</span><span class="type-signature"></span>
+    <h4 class="name" id="Permissions">
+        <a href="#Permissions">#</a>
+        <span class="type-signature"></span>new Permissions<span class="signature">(permissions)</span><span class="type-signature"></span>
     </h4>
 
     
@@ -141,8 +141,7 @@
 
 
     <div class="description">
-        <p>A channel found in a guild<br>
-Contains many &quot;readonly&quot; values that can be changed.<p style="text-decoration: underline;">Do not change their values.</p></p>
+        <p>An extension of BitField dedicated to channel/guild permissions</p>
     </div>
 
 
@@ -169,6 +168,8 @@ Contains many &quot;readonly&quot; values that can be changed.<p style="text-dec
         
 
         
+        <th>Default</th>
+        
 
         <th class="last">Description</th>
     </tr>
@@ -179,13 +180,13 @@ Contains many &quot;readonly&quot; values that can be changed.<p style="text-dec
 
         <tr>
             
-                <td class="name"><code>client</code></td>
+                <td class="name"><code>permissions</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="Client.html">Client</a></span>
+<span class="param-type">*</span>
 
 
             
@@ -194,31 +195,14 @@ Contains many &quot;readonly&quot; values that can be changed.<p style="text-dec
             
 
             
-
-            <td class="description last"><p>The client that instantiated this channel.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>data</code></td>
-            
-
-            <td class="type">
-            
+                <td class="default">
                 
-<span class="param-type"><a href="global.html#GuildChannelData">GuildChannelData</a></span>
-
-
-            
-            </td>
-
+                    0
+                
+                </td>
             
 
-            
-
-            <td class="description last"><p>The data for this channel</p></td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -263,7 +247,7 @@ Contains many &quot;readonly&quot; values that can be changed.<p style="text-dec
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="channel_GuildChannel.js.html">channel/GuildChannel.js</a>, <a href="channel_GuildChannel.js.html#line12">line 12</a>
+                <a href="guild_Permissions.js.html">guild/Permissions.js</a>, <a href="guild_Permissions.js.html#line9">line 9</a>
             </li></ul></dd>
         </div>
     
@@ -302,7 +286,7 @@ Contains many &quot;readonly&quot; values that can be changed.<p style="text-dec
 
 
     <ul>
-        <li><a href="Channel.html">Channel</a></li>
+        <li><a href="BitField.html">BitField</a></li>
     </ul>
 
 
@@ -321,16 +305,182 @@ Contains many &quot;readonly&quot; values that can be changed.<p style="text-dec
 
         
             
-<h4 class="name" id=".permissionOverwrites">
-    <a href="#.permissionOverwrites">#</a>
-    <span class="type-signature">(static, readonly) </span>permissionOverwrites<span class="type-signature"> :Object</span>
+<h4 class="name" id=".ALL">
+    <a href="#.ALL">#</a>
+    <span class="type-signature">(static) </span>ALL<span class="type-signature"> :number</span>
 </h4>
 
 
 
 
 <div class="description">
-    <p>The permission overwrites of this channel.</p>
+    <p>The bitfield representing all permissions</p>
+</div>
+
+
+
+    <div class="member-item-container flex">
+        <strong>Type: </strong>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
+
+
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="guild_Permissions.js.html">guild/Permissions.js</a>, <a href="guild_Permissions.js.html#line58">line 58</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".DEFAULT">
+    <a href="#.DEFAULT">#</a>
+    <span class="type-signature">(static) </span>DEFAULT<span class="type-signature"> :number</span>
+</h4>
+
+
+
+
+<div class="description">
+    <p>The default permissions for users.</p>
+</div>
+
+
+
+    <div class="member-item-container flex">
+        <strong>Type: </strong>
+        <ul>
+            <li>
+                
+<span class="param-type">number</span>
+
+
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="guild_Permissions.js.html">guild/Permissions.js</a>, <a href="guild_Permissions.js.html#line65">line 65</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".FLAGS">
+    <a href="#.FLAGS">#</a>
+    <span class="type-signature">(static) </span>FLAGS<span class="type-signature"> :Object</span>
+</h4>
+
+
+
+
+<div class="description">
+    <p>The types of permissions and their values.</p>
 </div>
 
 
@@ -383,7 +533,7 @@ Contains many &quot;readonly&quot; values that can be changed.<p style="text-dec
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="channel_GuildChannel.js.html">channel/GuildChannel.js</a>, <a href="channel_GuildChannel.js.html#line15">line 15</a>
+                <a href="guild_Permissions.js.html">guild/Permissions.js</a>, <a href="guild_Permissions.js.html#line14">line 14</a>
             </li></ul></dd>
         </div>
     
@@ -404,16 +554,16 @@ Contains many &quot;readonly&quot; values that can be changed.<p style="text-dec
 
         
             
-<h4 class="name" id="client">
-    <a href="#client">#</a>
-    <span class="type-signature">(readonly) </span>client<span class="type-signature"> :<a href="Client.html">Client</a></span>
+<h4 class="name" id="bitfield">
+    <a href="#bitfield">#</a>
+    <span class="type-signature"></span>bitfield<span class="type-signature"> :number</span>
 </h4>
 
 
 
 
 <div class="description">
-    <p>The client that instantiated this object.</p>
+    <p>Bitfield of the packed bits</p>
 </div>
 
 
@@ -423,7 +573,7 @@ Contains many &quot;readonly&quot; values that can be changed.<p style="text-dec
         <ul>
             <li>
                 
-<span class="param-type"><a href="Client.html">Client</a></span>
+<span class="param-type">number</span>
 
 
             </li>
@@ -446,7 +596,7 @@ Contains many &quot;readonly&quot; values that can be changed.<p style="text-dec
         <div class="details-item-container">
             <dt class="inherited-from">Inherited From:</dt>
             <dd class="inherited-from"><ul class="dummy"><li>
-                <a href="Base.html#client">Base#client</a>
+                <a href="BitField.html#bitfield">BitField#bitfield</a>
             </li></ul></dd>
         </div>
     
@@ -473,485 +623,7 @@ Contains many &quot;readonly&quot; values that can be changed.<p style="text-dec
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="Base.js.html">Base.js</a>, <a href="Base.js.html#line14">line 14</a>
-            </li></ul></dd>
-        </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="guild">
-    <a href="#guild">#</a>
-    <span class="type-signature">(readonly) </span>guild<span class="type-signature"> :<a href="Guild.html">Guild</a></span>
-</h4>
-
-
-
-
-<div class="description">
-    <p>The id of the guild this channel is from.</p>
-</div>
-
-
-
-    <div class="member-item-container flex">
-        <strong>Type: </strong>
-        <ul>
-            <li>
-                
-<span class="param-type"><a href="Guild.html">Guild</a></span>
-
-
-            </li>
-        </ul>
-    </div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class="details-item-container">
-            <dt class="tag-source">Source:</dt>
-            <dd class="tag-source"><ul class="dummy"><li>
-                <a href="channel_GuildChannel.js.html">channel/GuildChannel.js</a>, <a href="channel_GuildChannel.js.html#line37">line 37</a>
-            </li></ul></dd>
-        </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="instantiated">
-    <a href="#instantiated">#</a>
-    <span class="type-signature">(readonly) </span>instantiated<span class="type-signature"> :Number</span>
-</h4>
-
-
-
-
-<div class="description">
-    <p>The time at which this object was instantiated.</p>
-</div>
-
-
-
-    <div class="member-item-container flex">
-        <strong>Type: </strong>
-        <ul>
-            <li>
-                
-<span class="param-type">Number</span>
-
-
-            </li>
-        </ul>
-    </div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-        <div class="details-item-container">
-            <dt class="inherited-from">Inherited From:</dt>
-            <dd class="inherited-from"><ul class="dummy"><li>
-                <a href="Base.html#instantiated">Base#instantiated</a>
-            </li></ul></dd>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class="details-item-container">
-            <dt class="tag-source">Source:</dt>
-            <dd class="tag-source"><ul class="dummy"><li>
-                <a href="Base.js.html">Base.js</a>, <a href="Base.js.html#line23">line 23</a>
-            </li></ul></dd>
-        </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="name">
-    <a href="#name">#</a>
-    <span class="type-signature">(readonly) </span>name<span class="type-signature"></span>
-</h4>
-
-
-
-
-<div class="description">
-    <p>The channel name.<br>
-Setting this value invokes <a href="GuildChannel.html#setName">GuildChannel#setName</a></p>
-</div>
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class="details-item-container">
-            <dt class="tag-source">Source:</dt>
-            <dd class="tag-source"><ul class="dummy"><li>
-                <a href="channel_GuildChannel.js.html">channel/GuildChannel.js</a>, <a href="channel_GuildChannel.js.html#line29">line 29</a>
-            </li></ul></dd>
-        </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="parent">
-    <a href="#parent">#</a>
-    <span class="type-signature">(readonly) </span>parent<span class="type-signature"></span>
-</h4>
-
-
-
-
-<div class="description">
-    <p>The id of the channel's parent category.</p>
-</div>
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class="details-item-container">
-            <dt class="tag-source">Source:</dt>
-            <dd class="tag-source"><ul class="dummy"><li>
-                <a href="channel_GuildChannel.js.html">channel/GuildChannel.js</a>, <a href="channel_GuildChannel.js.html#line50">line 50</a>
-            </li></ul></dd>
-        </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="position">
-    <a href="#position">#</a>
-    <span class="type-signature"></span>position<span class="type-signature"></span>
-</h4>
-
-
-
-
-<div class="description">
-    <p>The channel's position<br>
-Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#setPosition</a></p>
-</div>
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class="details-item-container">
-            <dt class="tag-source">Source:</dt>
-            <dd class="tag-source"><ul class="dummy"><li>
-                <a href="channel_GuildChannel.js.html">channel/GuildChannel.js</a>, <a href="channel_GuildChannel.js.html#line35">line 35</a>
-            </li></ul></dd>
-        </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="Type">
-    <a href="#Type">#</a>
-    <span class="type-signature">(readonly) </span>Type<span class="type-signature"> :String</span>
-</h4>
-
-
-
-
-<div class="description">
-    <p>The channel type.</p>
-</div>
-
-
-
-    <div class="member-item-container flex">
-        <strong>Type: </strong>
-        <ul>
-            <li>
-                
-<span class="param-type">String</span>
-
-
-            </li>
-        </ul>
-    </div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-        <div class="details-item-container">
-            <dt class="inherited-from">Inherited From:</dt>
-            <dd class="inherited-from"><ul class="dummy"><li>
-                <a href="Channel.html#Type">Channel#Type</a>
-            </li></ul></dd>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class="details-item-container">
-            <dt class="tag-source">Source:</dt>
-            <dd class="tag-source"><ul class="dummy"><li>
-                <a href="channel_Channel.js.html">channel/Channel.js</a>, <a href="channel_Channel.js.html#line13">line 13</a>
+                <a href="client_BitField.js.html">client/BitField.js</a>, <a href="client_BitField.js.html#line27">line 27</a>
             </li></ul></dd>
         </div>
     
@@ -981,14 +653,206 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
     
 
-    <h4 class="name" id="fetch">
-        <a href="#fetch">#</a>
-        <span class="type-signature"></span>fetch<span class="signature">(identifiable, cache, forceApi)</span><span class="type-signature"> &rarr; {Promise}</span>
+    <h4 class="name" id="add">
+        <a href="#add">#</a>
+        <span class="type-signature"></span>add<span class="signature">(&hellip;bits<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="BitField.html">BitField</a>}</span>
     </h4>
 
     
 
 
+
+    <div class="description">
+        <p>Adds bits to these ones.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>bits</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#BitFieldResolvable">BitFieldResolvable</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Bits to add</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="inherited-from">Inherited From:</dt>
+            <dd class="inherited-from"><ul class="dummy"><li>
+                <a href="BitField.html#add">BitField#add</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="client_BitField.js.html">client/BitField.js</a>, <a href="client_BitField.js.html#line83">line 83</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+<div class="param-desc">
+    <p>These bits or new BitField if the instance is frozen.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="BitField.html">BitField</a></span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="any">
+        <a href="#any">#</a>
+        <span class="type-signature"></span>any<span class="signature">(bit)</span><span class="type-signature"> &rarr; {boolean}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Checks whether the bitfield has a bit, or any of multiple bits.</p>
+    </div>
 
 
 
@@ -1024,19 +888,13 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
         <tr>
             
-                <td class="name"><code>identifiable</code></td>
+                <td class="name"><code>bit</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="Channel.html">Channel</a></span>
-|
-
-<span class="param-type">string</span>
-|
-
-<span class="param-type">number</span>
+<span class="param-type"><a href="global.html#BitFieldResolvable">BitFieldResolvable</a></span>
 
 
             
@@ -1046,53 +904,7 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
             
 
-            <td class="description last"><p>The name, id, or object of a channel.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cache</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Whether or not to cache the object.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>forceApi</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Whether or not to skip checking the cache and immediately call the API.</p></td>
+            <td class="description last"><p>Bit(s) to check for</p></td>
         </tr>
 
     
@@ -1117,7 +929,7 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
         <div class="details-item-container">
             <dt class="inherited-from">Inherited From:</dt>
             <dd class="inherited-from"><ul class="dummy"><li>
-                <a href="Channel.html#fetch">Channel#fetch</a>
+                <a href="BitField.html#any">BitField#any</a>
             </li></ul></dd>
         </div>
     
@@ -1144,7 +956,7 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="channel_Channel.js.html">channel/Channel.js</a>, <a href="channel_Channel.js.html#line62">line 62</a>
+                <a href="client_BitField.js.html">client/BitField.js</a>, <a href="client_BitField.js.html#line35">line 35</a>
             </li></ul></dd>
         </div>
     
@@ -1182,7 +994,7 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
     </dt>
     <dd>
         
-<span class="param-type">Promise</span>
+<span class="param-type">boolean</span>
 
 
     </dd>
@@ -1199,9 +1011,9 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
     
 
-    <h4 class="name" id="setName">
-        <a href="#setName">#</a>
-        <span class="type-signature"></span>setName<span class="signature">(name)</span><span class="type-signature"></span>
+    <h4 class="name" id="equals">
+        <a href="#equals">#</a>
+        <span class="type-signature"></span>equals<span class="signature">(bit)</span><span class="type-signature"> &rarr; {boolean}</span>
     </h4>
 
     
@@ -1209,7 +1021,7 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
 
     <div class="description">
-        <p>Change the name of the channel</p>
+        <p>Checks if this bitfield equals another</p>
     </div>
 
 
@@ -1246,13 +1058,13 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>bit</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type"><a href="global.html#BitFieldResolvable">BitFieldResolvable</a></span>
 
 
             
@@ -1262,7 +1074,7 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
             
 
-            <td class="description last"><p>The new position of the channel</p></td>
+            <td class="description last"><p>Bit(s) to check for</p></td>
         </tr>
 
     
@@ -1283,6 +1095,13 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
     
 
+    
+        <div class="details-item-container">
+            <dt class="inherited-from">Inherited From:</dt>
+            <dd class="inherited-from"><ul class="dummy"><li>
+                <a href="BitField.html#equals">BitField#equals</a>
+            </li></ul></dd>
+        </div>
     
 
     
@@ -1307,7 +1126,7 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="channel_GuildChannel.js.html">channel/GuildChannel.js</a>, <a href="channel_GuildChannel.js.html#line85">line 85</a>
+                <a href="client_BitField.js.html">client/BitField.js</a>, <a href="client_BitField.js.html#line44">line 44</a>
             </li></ul></dd>
         </div>
     
@@ -1333,6 +1152,27 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
 
 
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
 
 
 
@@ -1341,9 +1181,9 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
     
 
-    <h4 class="name" id="setParent">
-        <a href="#setParent">#</a>
-        <span class="type-signature"></span>setParent<span class="signature">(snowflake<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+    <h4 class="name" id="freeze">
+        <a href="#freeze">#</a>
+        <span class="type-signature"></span>freeze<span class="signature">()</span><span class="type-signature"> &rarr; {Readonly.&lt;<a href="BitField.html">BitField</a>>}</span>
     </h4>
 
     
@@ -1351,7 +1191,300 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
 
     <div class="description">
-        <p>Change the channel category the channel is in. Null if no category.</p>
+        <p>Freezes these bits, making them immutable.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="inherited-from">Inherited From:</dt>
+            <dd class="inherited-from"><ul class="dummy"><li>
+                <a href="BitField.html#freeze">BitField#freeze</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="client_BitField.js.html">client/BitField.js</a>, <a href="client_BitField.js.html#line74">line 74</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+<div class="param-desc">
+    <p>These bits</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Readonly.&lt;<a href="BitField.html">BitField</a>></span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="has">
+        <a href="#has">#</a>
+        <span class="type-signature"></span>has<span class="signature">(bit)</span><span class="type-signature"> &rarr; {boolean}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Checks whether the bitfield has a bit, or multiple bits.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>bit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#BitFieldResolvable">BitFieldResolvable</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Bit(s) to check for</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="inherited-from">Inherited From:</dt>
+            <dd class="inherited-from"><ul class="dummy"><li>
+                <a href="BitField.html#has">BitField#has</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="client_BitField.js.html">client/BitField.js</a>, <a href="client_BitField.js.html#line53">line 53</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="missing">
+        <a href="#missing">#</a>
+        <span class="type-signature"></span>missing<span class="signature">(bits, &hellip;hasParams)</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Gets all given bits that are missing from the bitfield.</p>
     </div>
 
 
@@ -1380,8 +1513,6 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
         
 
         
-        <th>Default</th>
-        
 
         <th class="last">Description</th>
     </tr>
@@ -1392,19 +1523,13 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
         <tr>
             
-                <td class="name"><code>snowflake</code></td>
+                <td class="name"><code>bits</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
-|
-
-<span class="param-type">Number</span>
-|
-
-<span class="param-type">null</span>
+<span class="param-type"><a href="global.html#BitFieldResolvable">BitFieldResolvable</a></span>
 
 
             
@@ -1413,8 +1538,6 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
             
                 <td class="attributes">
                 
-                    &lt;optional><br>
-                
 
                 
 
@@ -1423,14 +1546,41 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
             
 
             
-                <td class="default">
+
+            <td class="description last"><p>Bit(s) to check for</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hasParams</code></td>
+            
+
+            <td class="type">
+            
                 
-                    null
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
                 
                 </td>
             
 
-            <td class="description last"><p>The ID of the new parent category.</p></td>
+            
+
+            <td class="description last"><p>Additional parameters for the has method, if any</p></td>
         </tr>
 
     
@@ -1451,6 +1601,13 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
     
 
+    
+        <div class="details-item-container">
+            <dt class="inherited-from">Inherited From:</dt>
+            <dd class="inherited-from"><ul class="dummy"><li>
+                <a href="BitField.html#missing">BitField#missing</a>
+            </li></ul></dd>
+        </div>
     
 
     
@@ -1475,7 +1632,7 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="channel_GuildChannel.js.html">channel/GuildChannel.js</a>, <a href="channel_GuildChannel.js.html#line75">line 75</a>
+                <a href="client_BitField.js.html">client/BitField.js</a>, <a href="client_BitField.js.html#line65">line 65</a>
             </li></ul></dd>
         </div>
     
@@ -1501,6 +1658,27 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
 
 
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;string></span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
 
 
 
@@ -1509,9 +1687,9 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
     
 
-    <h4 class="name" id="setPosition">
-        <a href="#setPosition">#</a>
-        <span class="type-signature"></span>setPosition<span class="signature">(pos)</span><span class="type-signature"></span>
+    <h4 class="name" id="remove">
+        <a href="#remove">#</a>
+        <span class="type-signature"></span>remove<span class="signature">(&hellip;bits<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="BitField.html">BitField</a>}</span>
     </h4>
 
     
@@ -1519,7 +1697,7 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
 
     <div class="description">
-        <p>Change the location of the channel on the channel list</p>
+        <p>Removes bits from these.</p>
     </div>
 
 
@@ -1544,6 +1722,8 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -1556,26 +1736,35 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
         <tr>
             
-                <td class="name"><code>pos</code></td>
+                <td class="name"><code>bits</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Number</span>
-|
-
-<span class="param-type">String</span>
+<span class="param-type"><a href="global.html#BitFieldResolvable">BitFieldResolvable</a></span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>The new position of the channel</p></td>
+            <td class="description last"><p>Bits to remove</p></td>
         </tr>
 
     
@@ -1596,6 +1785,13 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
     
 
+    
+        <div class="details-item-container">
+            <dt class="inherited-from">Inherited From:</dt>
+            <dd class="inherited-from"><ul class="dummy"><li>
+                <a href="BitField.html#remove">BitField#remove</a>
+            </li></ul></dd>
+        </div>
     
 
     
@@ -1620,7 +1816,7 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="channel_GuildChannel.js.html">channel/GuildChannel.js</a>, <a href="channel_GuildChannel.js.html#line65">line 65</a>
+                <a href="client_BitField.js.html">client/BitField.js</a>, <a href="client_BitField.js.html#line98">line 98</a>
             </li></ul></dd>
         </div>
     
@@ -1645,6 +1841,396 @@ Setting this value invokes <a href="GuildChannel.html#setPosition">GuildChannel#
 
 
 
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+<div class="param-desc">
+    <p>These bits or new BitField if the instance is frozen.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="BitField.html">BitField</a></span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="serialize">
+        <a href="#serialize">#</a>
+        <span class="type-signature"></span>serialize<span class="signature">(&hellip;hasParams)</span><span class="type-signature"> &rarr; {Object}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Gets an object mapping field names to a boolean indicating whether the
+bit is available.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>hasParams</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Additional parameters for the has method, if any</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="inherited-from">Inherited From:</dt>
+            <dd class="inherited-from"><ul class="dummy"><li>
+                <a href="BitField.html#serialize">BitField#serialize</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="client_BitField.js.html">client/BitField.js</a>, <a href="client_BitField.js.html#line114">line 114</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="toArray">
+        <a href="#toArray">#</a>
+        <span class="type-signature"></span>toArray<span class="signature">(&hellip;hasParams)</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Gets an Array of bitfield names based on the bits available.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>hasParams</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Additional parameters for the has method, if any</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="inherited-from">Inherited From:</dt>
+            <dd class="inherited-from"><ul class="dummy"><li>
+                <a href="BitField.html#toArray">BitField#toArray</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="client_BitField.js.html">client/BitField.js</a>, <a href="client_BitField.js.html#line125">line 125</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;string></span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
 
 
 
