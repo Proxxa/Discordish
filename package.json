@@ -4,11 +4,11 @@
   "description": "",
   "main": "src/index.js",
   "dependencies": {
-    "clean-jsdoc-theme": "^3.2.10",
     "node-fetch": "^2.6.1",
     "ws": "^7.4.5"
   },
   "devDependencies": {
+    "clean-jsdoc-theme": "^3.2.10",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.25.0"
   },
