@@ -4,6 +4,13 @@ const Guild = require('./Guild')
 const Permissions = require('./Permissions')
 
 class Role extends Base {
+
+    /**
+     * A Role within a guild
+     * @param {Client} client The client that instantiated this
+     * @param {RoleData} data The data from which to build the role
+     * @param {Guild} guild The guild from which this role originates
+     */
     constructor(client, data, guild) {
         super(client)
 
@@ -12,7 +19,7 @@ class Role extends Base {
          * @memberof Role
          * @instance
          */
-        Object.defineProperty(this, 'id', { value: Guild.resolve(guild) })
+        Object.defineProperty(this, 'guild', { value: Guild.resolve(guild) })
 
         /**
          * @member {String} id The ID of the role
