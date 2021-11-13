@@ -10,8 +10,7 @@ class Client extends EventEmitter {
     /**
      * Create a new Discord client.
      * @param {ClientOptions} ClientOptions The options for the client. 
-     * @extends EventEmitter 
-     * @emits Client#ready OKAY
+     * @extends EventEmitter
      */
     constructor(ClientOptions = defaultClientOptions) {
         super()
