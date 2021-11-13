@@ -52,7 +52,8 @@ class Client extends EventEmitter {
              */
             this.users = new UserManager(this)
             /**
-             * @member {ChannelManager} channels The {@link Manager manager} which holds all cached channels for the client<br>Using {@link Client#guilds} is much preferred.
+             * @member {ChannelManager} channels The {@link Manager manager} which holds all cached channels for the client<br>
+             * Using other methods of referencing channels such as {@link Client#guilds} and {@link Message#channel} are much preferred.
              * @memberof Client
              * @instance
              */
