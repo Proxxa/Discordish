@@ -39,15 +39,30 @@ class Client extends EventEmitter {
         await this.gateway.connect()
         
         this.gateway.on("READY", (readyData) => {
+            /**
+             * @member {GuildManager} guilds The {@link Manager manager} which holds all cached guilds for the client
+             * @memberof Client
+             * @instance
+             */
             this.guilds = new GuildManager(this, readyData.d.guilds)
+            /**
+             * @member {UserManager} users The {@link Manager manager} which holds all cached users for the client
+             * @memberof Client
+             * @instance
+             */
             this.users = new UserManager(this)
+            /**
+             * @member {ChannelManager} channels The {@link Manager manager} which holds all cached channels for the client<br>Using {@link Client#guilds} is much preferred.
+             * @memberof Client
+             * @instance
+             */
             this.channels = new ChannelManager(this)
             this.users.updateCache(readyData.d.user)
 
             
             /**
              * Emitted when the client is logged in
-             * @event Client#event:ready
+             * @event Client#ready
              */
             this.emit("ready")
         })
@@ -62,7 +77,7 @@ class Client extends EventEmitter {
             let message = new Message(this, messageData)
             /**
              * Emitted when a message is received
-             * @event Client#event:message
+             * @event Client#message
              * @type {Message}
              */
             setTimeout(() => this.emit("message", message), 1)

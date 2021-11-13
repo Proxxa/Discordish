@@ -47,7 +47,7 @@ class GatewayManager extends EventEmitter {
     get gateway() {
         /**
          * Emitted for general debug messages. Heavily cluttered.
-         * @event Client#event:debug 
+         * @event Client#debug 
          * @type {any}
          */
         this.client.emit("debug", `[GW] Gateway requested.`)
