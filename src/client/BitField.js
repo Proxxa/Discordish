@@ -3,6 +3,12 @@
     All of this code is repurposed from DiscordJS (https://discord.js.org)
     This is simply much too easy to not use.
     Any recreation of it would entirely be expanding the code and renaming variables.
+    
+    As such, it's necessary to provide the proper licensing that this file should
+    be under, which can be found at http://www.apache.org/licenses/LICENSE-2.0
+
+    It's a rather large license, but it's quite necessary to give proper acknowledgement
+    to the creators of this file.
 */
 
 /**

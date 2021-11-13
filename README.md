@@ -31,3 +31,9 @@ client.login("Bot Token")
 ## Contributions
 
 Feel free to make a PR, I'll probably forget about this in no time, though.
+
+
+
+## Additional Information
+
+This repository uses *one* file ([BitField.js](https://github.com/discordjs/discord.js/blob/main/src/util/BitField.js)) from [Discord.JS](https://discord.js.org/), which is licensed under the [Apache License 2.0](https://raw.githubusercontent.com/discordjs/discord.js/main/LICENSE). A copy of this license can be found at the preceding link and the link referenced in this repository's copy of the BitField.js file.
