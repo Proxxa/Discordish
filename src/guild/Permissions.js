@@ -1,12 +1,21 @@
 const BitField = require("../client/Bitfield")
 
 class Permissions extends BitField {
-
+    /**
+     * An extension of BitField dedicated to channel/guild permissions
+     * @param {*} permissions 
+     * @extends BitField
+     */
     constructor(permissions = 0) {
         super(permissions)
     }
 }
 
+/**
+ * @member {Object} FLAGS The types of permissions and their values.
+ * @memberof Permissions
+ * @static
+ */
 Permissions.FLAGS = Object.freeze({
     "CREATE_INVITE": 1 << 0,
     "KICK_MEMBERS": 1 << 1,

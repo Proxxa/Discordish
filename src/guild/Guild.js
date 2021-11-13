@@ -147,6 +147,7 @@ class Guild extends Base {
             fetch('https://discord.com/api/guilds/' + this.id, { method: 'PATCH', body: JSON.stringify(content), 'headers': { 'Authorization': 'Bot ' + this.client.token, 'Content-Type': 'application/json' } })
                 .then(res => res.json())
                 .then(body => {
+                    this.client.guilds.updateCache(body)
                     resolve(this.client.guilds.cache.get(body.id))
                 }).catch(reject)
         })

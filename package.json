@@ -8,8 +8,8 @@
     "ws": "^7.4.5"
   },
   "devDependencies": {
-    "clean-jsdoc-theme": "^3.2.10",
     "babel-eslint": "^10.1.0",
+    "clean-jsdoc-theme": "^3.2.10",
     "eslint": "^7.25.0"
   },
   "scripts": {
